@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 // Components
 import { Default } from '../Welcome'
 import Welcome_v1 from './Welcome_v1/Welcome_v1'
@@ -15,6 +15,15 @@ export function useVersionContext() {
 
 // Provider
 export const VersionProvider = ({ version }) => {
+
+    // Dynamic Import of Styles
+    useEffect(() => {
+        if (version && WELCOME_VERSIONS[version] !== undefined) {
+            import(`./Welcome_v${version}/Welcome_v${version}.scss`)
+        }
+    }, [version])
+
+
     const WELCOME_VERSIONS = {
         1: () => <Welcome_v1 />,
         2: () => <Welcome_v2 />,

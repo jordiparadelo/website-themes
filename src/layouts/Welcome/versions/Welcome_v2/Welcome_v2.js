@@ -1,7 +1,7 @@
 import React from "react";
 import { useDataContext } from "../../DataContext";
 // Styles
-import "./Welcome_v2.scss";
+// import "./Welcome_v2.scss";
 
 const Welcome_v2 = () => {
   const { title, text, tag, image } = useDataContext();
