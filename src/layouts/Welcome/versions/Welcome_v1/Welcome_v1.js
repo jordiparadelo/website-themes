@@ -11,7 +11,7 @@ const Welcome_v1 = () => {
       <header className="header">
         <div className="header_title">
           <span>{tag}</span>
-          <h2>{title} 1</h2>
+          <h2>{title}</h2>
         </div>
         <p className="header_description">{text}</p>
       </header>
