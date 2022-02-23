@@ -1,17 +1,31 @@
 import React from "react";
 import { useDataContext } from "../../DataContext";
+// Styles
+import "./Welcome_v3.scss";
 
 const Welcome_v3 = () => {
   const { title, text, tag, image } = useDataContext();
 
   return (
-    <>
-      <header>
-        <span>{tag}</span>
-        <h2>{title} 3</h2>
+    <div className="wrapper">
+      <header className="header">
+        <div className="header_title">
+          <span>{tag}</span>
+          <h2>{title} 1</h2>
+        </div>
+        <div className="header_description">
+          <p>{text}</p>
+        </div>
       </header>
-      <p>{text}</p>
-    </>
+      <figure className="cover-image">
+        <img
+          src={image}
+          width="300px"
+          height="150px"
+          alt="Sky view of the shore of a beach"
+        />
+      </figure>
+    </div>
   );
 };
 

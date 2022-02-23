@@ -4,7 +4,7 @@ import { Welcome, FeaturesProperties, Discover, Categories, Discounts, Instagram
 const App = () => {
   return (
     <>
-      <Welcome version={1} />
+      <Welcome version={3} />
       <FeaturesProperties />
       <Categories />
       <Discover />

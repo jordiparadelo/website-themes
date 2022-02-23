@@ -1,4 +1,4 @@
-#Welcome {
+[data-version="1"] {
   padding: var(--spacing);
   display: flex;
   flex-direction: column;
@@ -10,7 +10,6 @@
   .header {
     display: flex;
     flex-wrap: wrap;
-    max-width: calc(100% - var(--spacing-xxxl));
     width: 100%;
     gap: 5vw;
     justify-content: space-between;

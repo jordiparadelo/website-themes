@@ -18,10 +18,9 @@ export const Default = () => {
 };
 
 const Welcome = ({ version }) => {
-  console.log(version);
   return (
     <DataProvider>
-      <section id="Welcome">
+      <section id="Welcome" data-version={version || null}>
         {version
           ? <VersionProvider version={version} />
           : <Default />
