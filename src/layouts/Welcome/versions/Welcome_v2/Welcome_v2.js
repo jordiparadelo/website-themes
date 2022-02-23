@@ -23,6 +23,7 @@ const Welcome_v2 = () => {
           src={image}
           width="300px"
           height="150px"
+          loading="lazy"
           alt="Sky view of the shore of a beach"
         />
       </figure>

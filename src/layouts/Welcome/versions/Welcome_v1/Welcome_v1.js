@@ -18,8 +18,9 @@ const Welcome_v1 = () => {
       <figure className="cover-image">
         <img
           src={image}
-          width="300px"
-          height="150px"
+          width="564px"
+          height="564px"
+          loading="lazy"
           alt="Sky view of the shore of a beach"
         />
       </figure>
