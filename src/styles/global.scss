@@ -5,11 +5,18 @@
   --activeColor: hsl(218, 100%, 52%);
   --lightColor: hsl(218, 100%, 98%);
   --fontColor: hsl(218, 100%, 15%);
-  //   Splacing
+  //   Spacing
   --spacing: 16px;
   --spacing-xs: calc(var(--spacing) / 2);
   --spacing-lg: calc(var(--spacing) * 1.5);
   --spacing-xl: calc(var(--spacing) * 2);
+  --spacing-xxl: calc(var(--spacing) * 3);
+  --spacing-xxxl: calc(var(--spacing) * 4);
+  //   Corners
+  --corners: 8px;
+  --corners-xs: calc(var(--corners) / 2);
+  --corners-lg: calc(var(--corners) * 1.5);
+  --corners-xl: calc(var(--corners) * 2);
   //   Fonts
   --fontFamily: "Work Sans", system-ui, sans-serif;
   //   Transitions

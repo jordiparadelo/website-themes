@@ -17,7 +17,9 @@ const Welcome_v1 = () => {
       </header>
       <figure className="cover-image">
         <img
-          src="https://images.pexels.com/photos/1249586/pexels-photo-1249586.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+          src={image}
+          width="300px"
+          height="150px"
           alt="Sky view of the shore of a beach"
         />
       </figure>
