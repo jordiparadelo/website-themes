@@ -4,13 +4,14 @@
   align-items: flex-start;
   gap: var(--spacing-xl);
   background-color: var(--primaryColor);
-  max-height: 100vh;
+  min-height: 100vh;
   padding: var(--spacing-xl) 0;
 
   & > * {
     padding: 0 var(--spacing-xl);
   }
 
+  // Header
   .header {
     display: flex;
     flex-wrap: wrap;
@@ -42,6 +43,14 @@
       max-width: 50ch;
       font-size: var(--fontSize);
       line-height: 1.5em;
+    }
+  }
+  // Properties Gallery
+  .horizontal-media-scroller {
+    flex-grow: 1;
+
+    @media screen and (max-width: 350px) {
+      --size: 100%;
     }
   }
 }

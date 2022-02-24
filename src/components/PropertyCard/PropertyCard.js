@@ -6,7 +6,7 @@ const PropertyCard = ({ data: { imageSrc, imageAlt, title, price, type } }) => {
   return (
     <figure className="property-card">
       <picture className="property_image">
-        <img src={imageSrc} alt={imageAlt} />
+        <img src={imageSrc} alt={imageAlt} lazy='true' />
       </picture>
       <figcaption className="property_content">
         <header className="content_title">
