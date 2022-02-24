@@ -3,12 +3,11 @@ import { useFetch } from '../../hooks/useFetch';
 
 
 // Data
-// const data = {
-//     tag: "Welcome",
-//     title: "A new way of traveling",
-//     text: "Live the unique experience of the Caribbean, in its idyllic authenticity! The selection and control of each villa are made by ourselves in order to ensure you the holidays you deserve. ",
-//     image: 'https://images.pexels.com/photos/1249586/pexels-photo-1249586.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
-// };
+const content = {
+    tag: "Features Properties",
+    title: "Find where enjoy your next holidays.",
+    button: 'Get More'
+};
 
 // Context
 const DataContext = React.createContext()
@@ -22,7 +21,7 @@ export const DataProvider = ({ children }) => {
     const { data, loading } = useFetch()
     // console.log({ data, loading })
     return (
-        <DataContext.Provider value={data}>{loading ? '⏲ loading ... ' : children}</DataContext.Provider>
+        <DataContext.Provider value={{ loading, data, content }}>{children}</DataContext.Provider>
     )
 
 }

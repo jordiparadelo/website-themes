@@ -5,12 +5,24 @@ import { useDataContext } from "../../DataContext";
 // import "./FeaturesProperties_v1.scss";
 
 const FeaturesProperties_v1 = () => {
-  const { hits: properties } = useDataContext();
-  // const properties = data.hits
-  console.log(properties)
+  const { data, content, loading } = useDataContext();
+
+  const PropertiesList = ({ properties, loading }) => properties.map(
+    ({ id, coverPhoto: { url: imageSrc }, imageAlt, title, price, type }) => <PropertyCard key={id} data={{ imageSrc, imageAlt, title, price, type }} />
+  )
 
   return (
-    properties.map(({ id, coverPhoto: { url: imageSrc }, imageAlt, title, price, type }) => <PropertyCard key={id} data={{ imageSrc, imageAlt, title, price, type }} />)
+    <>
+      <header className="header">
+        <div className="header_title">
+          <span>{content.tag}</span>
+          <h2>{content.title}</h2>
+        </div>
+        <button className="header_description">{content.button}</button>
+      </header>
+      {loading ? '⏲ loading ... ' : <PropertiesList properties={data.hits} />}
+    </>
+
   );
 };
 

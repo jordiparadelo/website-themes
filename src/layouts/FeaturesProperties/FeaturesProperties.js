@@ -20,7 +20,7 @@ export const Default = () => {
 const FeaturesProperties = ({ version }) => {
   return (
     <DataProvider>
-      <section id="FeaturesProperties">
+      <section id="FeaturesProperties" data-version={version || null}>
         {version
           ? <VersionProvider version={version} />
           : <Default />

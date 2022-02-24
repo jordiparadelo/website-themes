@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Welcome_v1.scss";
