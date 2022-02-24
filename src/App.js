@@ -5,7 +5,7 @@ const App = () => {
   return (
     <>
       <Welcome version={3} />
-      <FeaturesProperties />
+      <FeaturesProperties version={1} />
       <Categories />
       <Discover />
       <Discover />

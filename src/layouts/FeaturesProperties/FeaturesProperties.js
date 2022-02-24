@@ -1,13 +1,32 @@
 import React from "react";
 // Styles
 import "./FeaturesProperties.scss";
-const FeaturesProperties = () => {
+// Version
+import { VersionProvider } from "./versions/VersionContext.js";
+// Data
+import { DataProvider } from "./DataContext";
+
+// Default
+export const Default = () => {
   return (
-    <section id="FeaturesProperties">
+    <>
       <header>
-        <h2>Features Properties</h2>
+        <h2>Features Properties Default</h2>
       </header>
-    </section>
+    </>
+  );
+};
+
+const FeaturesProperties = ({ version }) => {
+  return (
+    <DataProvider>
+      <section id="FeaturesProperties">
+        {version
+          ? <VersionProvider version={version} />
+          : <Default />
+        }
+      </section>
+    </DataProvider >
   );
 };
 
