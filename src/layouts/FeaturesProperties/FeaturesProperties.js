@@ -26,7 +26,7 @@ const FeaturesProperties = ({ version }) => {
           : <Default />
         }
       </section>
-    </DataProvider >
+    </DataProvider>
   );
 };
 

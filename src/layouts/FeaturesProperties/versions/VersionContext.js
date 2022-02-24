@@ -15,21 +15,23 @@ export function useVersionContext() {
 
 // Provider
 export const VersionProvider = ({ version }) => {
-
-    // Dynamic Import of Styles
-    useEffect(() => {
-        if (version && WELCOME_VERSIONS[version] !== undefined) {
-            import(`./Welcome_v${version}/Welcome_v${version}.scss`)
-        }
-    }, [version])
-
-
-    const WELCOME_VERSIONS = {
+    const FEATURES_PROPERTIES_VERSIONS = {
         1: () => <FeaturesProperties_v1 />,
         2: () => <FeaturesProperties_v2 />,
         3: () => <FeaturesProperties_v3 />,
     };
-    const VERSION_SELECTED = WELCOME_VERSIONS[version] ? WELCOME_VERSIONS[version]() : <Default />
+
+    // Dynamic Import of Styles
+    useEffect(() => {
+        if (version && FEATURES_PROPERTIES_VERSIONS[version] !== undefined) {
+            // Import Global Styles from selected version
+            import(`../../../styles/versions/global_v${version}.scss`)
+            // Import Component Styles from selected version
+            import(`./FeaturesProperties_v${version}/FeaturesProperties_v${version}.scss`)
+        }
+    }, [version])
+
+    const VERSION_SELECTED = FEATURES_PROPERTIES_VERSIONS[version] ? FEATURES_PROPERTIES_VERSIONS[version]() : <Default />
 
     return (
         <VersionContext.Provider value={version}> {VERSION_SELECTED}</VersionContext.Provider>

@@ -18,6 +18,7 @@
   --corners-lg: calc(var(--corners) * 1.5);
   --corners-xl: calc(var(--corners) * 2);
   --corners-xxl: calc(var(--corners) * 3);
+  --corners-round: 999px;
   //   Fonts
   --fontFamily: "Work Sans", system-ui, sans-serif;
   //   Transitions
@@ -30,6 +31,7 @@
   margin: unset;
   padding: unset;
   box-sizing: border-box;
+  text-rendering: geometricPrecision;
 }
 
 body {
@@ -59,7 +61,6 @@ button,
   border: unset;
   border-radius: var(--corners);
   transition: background 0.4s var(--ease);
-  text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
   //  Primary
@@ -78,23 +79,6 @@ button,
     color: var(--primaryColor);
     &:is(:hover, :focus) {
       --background: var(--lightColor);
-    }
-  }
-  //  Close
-  &.close {
-    --corners: 999px;
-    --size: 24px;
-    --background: transparent;
-    border: 2px solid var(--lightColor);
-    padding: unset;
-    justify-content: center;
-    color: var(--primaryColor);
-
-    &:is(:hover, :focus) {
-      --background: var(--primaryColor);
-      color: var(--lightColor);
-      border-color: var(--primaryColor);
-      outline: 2px solid var(--lightColor);
     }
   }
 }
