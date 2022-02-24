@@ -13,7 +13,7 @@
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x proximity;
-  scroll-padding-inline-start: var(--gap);
+  scroll-padding-inline-start: calc(var(--gap) / 2);
 
   > * {
     scroll-snap-align: start;

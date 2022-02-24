@@ -23,15 +23,16 @@
       gap: min(var(--padding), var(--spacing-xxl));
 
       .header_title {
-        --fontSize: max(5vw, 40px);
+        --fontSize: max(4vw, 40px);
         font-size: var(--fontSize);
+        max-width: 20ch;
         display: flex;
         flex-direction: column;
 
         span {
-          font-size: min(12px, 0.6em);
-          text-transform: uppercase;
+          font-size: max(0.35em, 12px);
           line-height: 1;
+          color: var(--primaryColor);
         }
         h2 {
           font-size: 1em;

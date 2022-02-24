@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap");
+
+:root {
+  //   Colors
+  --primaryColor: hsl(337, 90%, 54%);
+  --hoverColor: hsl(337, 100%, 70%);
+  --activeColor: hsl(337, 90%, 40%);
+  --lightColor: hsl(337, 0%, 96%);
+  --fontColor: hsl(337, 50%, 5%);
+  //   Fonts
+  --fontFamily: "Poppins", serif;
+}
+
+[data-version="3"] {
+  font-family: var(--fontFamily);
+  color: var(--fontColor);
+
+  button,
+  .button {
+    --background: var(--color: var(--primaryColor));
+    --size: 40px;
+    --padding: calc(var(--size) / 2);
+    font-size: 14px;
+    font-weight: 100;
+    background: var(--background);
+    min-width: var(--size);
+    min-height: var(--size);
+    border-radius: var(--corners-round);
+    //  States
+    &:is(:hover, :focus) {
+      --background: var(--hoverColor);
+      color: var(--fontColor);
+    }
+    &:is(:active) {
+      --background: var(--activeColor);
+    }
+  }
+}

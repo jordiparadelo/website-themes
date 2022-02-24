@@ -1,32 +1,43 @@
 import React from "react";
+import { HorizontalMediaScroller, PropertyCard } from "../../../../components";
 import { useDataContext } from "../../DataContext";
-// Styles
-// import "./FeaturesProperties_v2.scss";
+// // Styles
+// import "./FeaturesProperties_v1.scss";
 
 const FeaturesProperties_v2 = () => {
-  const { title, text, tag, image } = useDataContext();
+  const { data, content, loading } = useDataContext();
+
+  const PropertiesList = ({ properties, loading }) => (
+    <HorizontalMediaScroller>
+      {properties.map(
+        ({
+          id,
+          coverPhoto: { url: imageSrc },
+          imageAlt,
+          title,
+          price,
+          type,
+        }) => (
+          <PropertyCard
+            key={id}
+            data={{ imageSrc, imageAlt, title, price, type }}
+          />
+        )
+      )}
+    </HorizontalMediaScroller>
+  );
 
   return (
     <>
       <header className="header">
-        <div className="header_title">
-          <span>{tag}</span>
-          <h2>{title}</h2>
-        </div>
-        <div className="header_description">
-          <p>{text}</p>
-          <p>{text}</p>
+        <div className="wrapper">
+          <div className="header_title">
+            <span>{content.tag}</span>
+            <h2>{content.title}</h2>
+          </div>
         </div>
       </header>
-      <figure className="cover-image">
-        <img
-          src={image}
-          width="300px"
-          height="150px"
-          loading="lazy"
-          alt="Sky view of the shore of a beach"
-        />
-      </figure>
+      {loading ? "⏲ loading ... " : <PropertiesList properties={data.hits} />}
     </>
   );
 };
