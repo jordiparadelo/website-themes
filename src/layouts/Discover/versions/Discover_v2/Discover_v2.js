@@ -1,43 +1,42 @@
 import React from "react";
-import { HorizontalMediaScroller, PropertyCard } from "../../../../components";
+import { HorizontalMediaScroller } from "../../../../components";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Discover_v2.scss";
 
 const Discover_v2 = () => {
-  const { data, content, loading } = useDataContext();
+  const { data, content } = useDataContext();
+  console.log(data);
 
-  const PropertiesList = ({ properties, loading }) => (
+  const ImageGallery = ({ data: { title, image, link } }) => (
+    <a href={link} className="image-gallery">
+      <figure className="container">
+        <picture className="image_cover">
+          <img src={image} alt={`image of ${title}`} />
+        </picture>
+        <figcaption className="image_content">
+          <h3>{title}</h3>
+        </figcaption>
+      </figure>
+    </a>
+  );
+
+  const Gallery = ({ gallery }) => (
     <HorizontalMediaScroller>
-      {properties.map(
-        ({
-          id,
-          coverPhoto: { url: imageSrc },
-          imageAlt,
-          title,
-          price,
-          type,
-        }) => (
-          <PropertyCard
-            key={id}
-            data={{ imageSrc, imageAlt, title, price, type }}
-          />
-        )
-      )}
+      {gallery.map((data, index) => (
+        <ImageGallery key={data.title + index} data={data} />
+      ))}
     </HorizontalMediaScroller>
   );
 
   return (
     <>
       <header className="header">
-        <div className="wrapper">
-          <div className="header_title">
-            <span>{content.tag}</span>
-            <h2>{content.title}</h2>
-          </div>
+        <div className="header_title">
+          <h2>{content.tag}</h2>
         </div>
       </header>
-      {loading ? "⏲ loading ... " : <PropertiesList properties={data.hits} />}
+      <Gallery gallery={data} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-#FeaturesProperties[data-version="1"] {
+#Discover[data-version="1"] {
   --gap: max(var(--spacing-xxl), 5vw);
   display: flex;
   flex-direction: column;
@@ -43,18 +43,15 @@
     }
   }
 
-  // Horizontal Scroller
+  // Properties Gallery
   .horizontal-media-scroller {
     --size: max(25ch, 25vw);
+    flex-grow: 1;
     scroll-snap-type: x mandatory;
 
     > * {
       scroll-snap-align: center;
     }
-  }
-  // Properties Gallery
-  .horizontal-media-scroller {
-    flex-grow: 1;
 
     @media screen and (max-width: 350px) {
       --size: 100%;
