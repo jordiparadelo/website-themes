@@ -1,47 +1,40 @@
 import React from "react";
-import { HorizontalMediaScroller, PropertyCard } from "../../../../components";
 import { useDataContext } from "../../DataContext";
-// Styles
+// // Styles
 // import "./Discover_v3.scss";
 
 const Discover_v3 = () => {
-  const { data, content, loading } = useDataContext();
+  const { data, content } = useDataContext();
 
-  const PropertiesList = ({ properties, loading }) => (
-    <HorizontalMediaScroller>
-      {properties.map(
-        ({
-          id,
-          coverPhoto: { url: imageSrc },
-          imageAlt,
-          title,
-          price,
-          type,
-        }) => (
-          <PropertyCard
-            key={id}
-            data={{ imageSrc, imageAlt, title, price, type }}
-          />
-        )
-      )}
-    </HorizontalMediaScroller>
+  const ImageGallery = ({ data: { title, image, link } }) => (
+    <a href={link} className="image-gallery">
+      <figure className="container">
+        <picture className="image_cover">
+          <img src={image} alt={`image of ${title}`} />
+        </picture>
+        <figcaption className="image_content">
+          <h3>{title}</h3>
+        </figcaption>
+      </figure>
+    </a>
+  );
+
+  const Gallery = ({ gallery }) => (
+    <div className="gallery-grid">
+      {gallery.map((data, index) => (
+        <ImageGallery key={data.title + index} data={data} />
+      ))}
+    </div>
   );
 
   return (
     <div className="wrapper">
       <header className="header">
         <div className="header_title">
-          <span>{content.tag}</span>
-          <h2>{content.title}</h2>
-        </div>
-        <div className="header_actions">
-          <button disabled data-previous>
-            ←
-          </button>
-          <button data-next> → </button>
+          <h2>{content.tag}</h2>
         </div>
       </header>
-      {loading ? "⏲ loading ... " : <PropertiesList properties={data.hits} />}
+      <Gallery gallery={data} />
     </div>
   );
 };

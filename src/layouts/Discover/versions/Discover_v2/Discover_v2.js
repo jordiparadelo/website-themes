@@ -6,7 +6,6 @@ import { useDataContext } from "../../DataContext";
 
 const Discover_v2 = () => {
   const { data, content } = useDataContext();
-  console.log(data);
 
   const ImageGallery = ({ data: { title, image, link } }) => (
     <a href={link} className="image-gallery">
