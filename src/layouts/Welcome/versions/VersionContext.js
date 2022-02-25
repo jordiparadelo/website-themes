@@ -19,6 +19,11 @@ export const VersionProvider = ({ version }) => {
     // Dynamic Import of Styles
     useEffect(() => {
         if (version && WELCOME_VERSIONS[version] !== undefined) {
+            // INFO: Only for testing purposes - then the styles will be provide by the same global style
+            // Import Global Styles from selected version
+            // import(`../../../styles/versions/global_v${version}.scss`)
+
+            // Import Global Styles from selected version
             import(`./Welcome_v${version}/Welcome_v${version}.scss`)
         }
     }, [version])

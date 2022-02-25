@@ -1,5 +1,5 @@
 [data-version="2"] {
-  --headerSize: 55ch;
+  --headerSize: max(55ch, 40vw);
   --padding: 5vw;
   display: grid;
   min-height: 100vh;

@@ -24,8 +24,10 @@ export const VersionProvider = ({ version }) => {
     // Dynamic Import of Styles
     useEffect(() => {
         if (version && FEATURES_PROPERTIES_VERSIONS[version] !== undefined) {
+            // INFO: Only for testing purposes - then the styles will be provide by the same global style
             // Import Global Styles from selected version
-            import(`../../../styles/versions/global_v${version}.scss`)
+            // import(`../../../styles/versions/global_v${version}.scss`)
+
             // Import Component Styles from selected version
             import(`./FeaturesProperties_v${version}/FeaturesProperties_v${version}.scss`)
         }
