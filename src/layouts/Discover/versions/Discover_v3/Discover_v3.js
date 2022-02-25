@@ -22,7 +22,7 @@ const Discover_v3 = () => {
   const Gallery = ({ gallery }) => (
     <div className="gallery-grid">
       {gallery.map((data, index) => (
-        <ImageGallery key={data.title + index} data={data} />
+        <ImageGallery key={data.title} data={data} />
       ))}
     </div>
   );

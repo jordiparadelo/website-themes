@@ -23,7 +23,7 @@ const Discover_v2 = () => {
   const Gallery = ({ gallery }) => (
     <HorizontalMediaScroller>
       {gallery.map((data, index) => (
-        <ImageGallery key={data.title + index} data={data} />
+        <ImageGallery key={data.title} data={data} />
       ))}
     </HorizontalMediaScroller>
   );
