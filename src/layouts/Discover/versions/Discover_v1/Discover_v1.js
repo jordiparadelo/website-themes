@@ -9,12 +9,12 @@ const Discover_v1 = () => {
   console.log(data);
 
   const ImageGallery = ({ data: { title, image, link } }) => (
-    <a href={link}>
-      <figure>
-        <picture>
+    <a href={link} className="image-gallery">
+      <figure className="container">
+        <picture className="image_cover">
           <img src={image} alt={`image of ${title}`} />
         </picture>
-        <figcaption>
+        <figcaption className="image_content">
           <h3>{title}</h3>
         </figcaption>
       </figure>
@@ -36,7 +36,6 @@ const Discover_v1 = () => {
           <span>{content.tag}</span>
           <h2>{content.title}</h2>
         </div>
-        <button className="primary">{content.button}</button>
       </header>
       <Gallery gallery={data} />
     </>

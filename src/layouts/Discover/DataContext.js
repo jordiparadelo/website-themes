@@ -5,7 +5,7 @@ import { usePropertiesFetch } from '../../hooks/useFetch';
 // Data
 const content = {
     tag: "Discover",
-    title: "Get inspiration in your next trip.",
+    title: "Get inspiration for your next trip.",
 };
 const gallery = [
     {
