@@ -14,6 +14,7 @@
     padding: max(var(--spacing-xl), 5vw);
     background-image: linear-gradient(180deg, rgb(0 0 0 / 20%), transparent);
     color: var(--lightColor);
+    transition: all 0.5s var(--ease);
 
     .header_title {
       --fontSize: 14px;
@@ -49,6 +50,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     .container {
       display: grid;
@@ -61,6 +63,7 @@
         z-index: -1;
         display: flex;
         flex-direction: column;
+        transition: transform 1s var(--ease);
 
         img {
           flex-grow: 1;
@@ -69,10 +72,54 @@
         }
       }
       .image_content {
+        --fontSize: max(2.5vw, 40px);
+        --padding: max(var(--spacing), 2vw);
         align-self: center;
-        justify-self: stretch;
-        padding: var(--spacing-xl);
-        margin-top: auto;
+        padding: var(--padding);
+        text-align: center;
+        font-size: var(--fontSize);
+        color: var(--lightColor);
+        transition: margin 0.5s var(--ease), color 0.5s var(--ease);
+
+        h3 {
+          font-size: 1em;
+        }
+      }
+    }
+
+    // Divider
+    &:not(:last-child):after {
+      content: "";
+      width: 1px;
+      height: 60%;
+      background-color: var(--primaryColor);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      bottom: 0;
+    }
+
+    // Image Gallery States
+    @media screen and (hover: hover) and (min-width: 800px) {
+      &:not(:hover, :focus-visible) {
+        .image_cover {
+          transform: translateY(-100%);
+        }
+        .image_content {
+          margin-top: 100%;
+          color: var(--fontColor);
+        }
+      }
+    }
+  }
+
+  // Discover States
+  @media screen and (hover: hover) and (min-width: 800px) {
+    &:not(:hover) {
+      .header {
+        color: var(--fontColor);
+        background-image: linear-gradient(180deg, rgb(0 0 0 / 0%), transparent);
       }
     }
   }
