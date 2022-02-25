@@ -1,0 +1,111 @@
+[data-version="2"] {
+  --headerSize: max(55ch, 40vw);
+  --padding: 5vw;
+  display: grid;
+  min-height: 100vh;
+  min-width: 100%;
+
+  > * {
+    grid-area: 1/1;
+    align-self: stretch;
+  }
+
+  // Header
+  .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-grow: 1;
+    max-width: max(var(--headerSize), 80%);
+    background: var(--primaryColor);
+    z-index: -1;
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      max-width: var(--headerSize);
+      padding: var(--padding);
+      gap: var(--padding);
+      .header_title {
+        --fontSize: max(5vw, 40px);
+        font-size: var(--fontSize);
+        display: flex;
+        flex-direction: column;
+
+        span {
+          font-size: min(12px, 0.6em);
+          text-transform: uppercase;
+          line-height: 1;
+        }
+        h2 {
+          font-size: 1em;
+          font-weight: 100;
+        }
+      }
+      .header_description {
+        --fontSize: max(1.5vw, 18px);
+        font-size: var(--fontSize);
+        line-height: 1.5em;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing);
+
+        > * {
+          flex-basis: 20ch;
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+  // Properties Gallery
+  .horizontal-media-scroller {
+    flex-grow: 1;
+
+    padding-left: var(--headerSize);
+    padding-top: var(--padding);
+    padding-right: var(--padding);
+    padding-bottom: var(--padding);
+
+    align-self: center;
+    min-height: max(80vh, 300px);
+
+    @media screen and (max-width: 350px) {
+      --size: 100%;
+      gap: var(--padding);
+    }
+  }
+  // Propertie card
+  .property-card {
+    .property_image {
+      flex-grow: 1;
+    }
+    .property_content {
+      flex-grow: 0;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: unset;
+    background: var(--primaryColor);
+
+    // Header
+    .header {
+      background: unset;
+      min-width: 100%;
+      z-index: 0;
+
+      .wrapper {
+        display: flex;
+        z-index: unset;
+      }
+    }
+
+    // Properties Gallery
+    .horizontal-media-scroller {
+      padding: var(--padding);
+    }
+  }
+}

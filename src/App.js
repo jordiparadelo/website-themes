@@ -6,9 +6,8 @@ const App = () => {
     <>
       <Welcome version={2} />
       <FeaturesProperties version={3} />
+      <Discover version={1} />
       <Categories />
-      <Discover />
-      <Discover />
       <RecommendedProperties />
       <Discounts />
       <Instagram />

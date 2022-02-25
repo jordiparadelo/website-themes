@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useFetch } from '../../hooks/useFetch';
+import { usePropertiesFetch } from '../../hooks/useFetch';
 
 
 // Data
@@ -18,7 +18,7 @@ export function useDataContext() {
 }
 // Provider
 export const DataProvider = ({ children }) => {
-    const { data, loading } = useFetch()
+    const { data, loading } = usePropertiesFetch()
     // console.log({ data, loading })
     return (
         <DataContext.Provider value={{ loading, data, content }}>{children}</DataContext.Provider>

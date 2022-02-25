@@ -1,13 +1,31 @@
 import React from "react";
 // Styles
 import "./Discover.scss";
-const Discover = () => {
+// Version
+import { VersionProvider } from "./versions/VersionContext.js";
+// Data
+import { DataProvider } from "./DataContext";
+
+// Default
+export const Default = () => {
   return (
-    <section id="Discover">
+    <>
       <header>
-        <h2>Discover</h2>
+        <h2>Discover Default</h2>
       </header>
-    </section>
+    </>
+  );
+};
+const Discover = ({ version }) => {
+  return (
+    <DataProvider>
+      <section id="FeaturesProperties" data-version={version || null}>
+        {version
+          ? <VersionProvider version={version} />
+          : <Default />
+        }
+      </section>
+    </DataProvider>
   );
 };
 
