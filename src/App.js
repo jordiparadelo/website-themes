@@ -5,10 +5,10 @@ const App = () => {
   return (
     <>
       <Welcome version={2} />
-      <FeaturesProperties version={2} />
+      <FeaturesProperties version={3} />
       <Discover version={2} />
-      <RecommendedProperties version={2} />
-      <Categories />
+      <RecommendedProperties version={3} />
+      <Categories version={1} />
       <Discounts />
       <Instagram />
       <Newsletter />

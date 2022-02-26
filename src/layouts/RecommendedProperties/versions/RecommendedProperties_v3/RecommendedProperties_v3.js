@@ -1,42 +1,50 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { HorizontalMediaScroller, PropertyCard } from "../../../../components";
 import { useDataContext } from "../../DataContext";
 // // Styles
-// import "./Discover_v3.scss";
+// import "./RecommendedProperties_v3.scss";
 
-const Discover_v3 = () => {
-  const { data, content } = useDataContext();
+const RecommendedProperties_v3 = () => {
+  const { data, content, loading } = useDataContext();
 
-  const ImageGallery = ({ data: { title, image, link } }) => (
-    <a href={link} className="image-gallery">
-      <figure className="container">
-        <picture className="image_cover">
-          <img src={image} alt={`image of ${title}`} />
-        </picture>
-        <figcaption className="image_content">
-          <h3>{title}</h3>
-        </figcaption>
-      </figure>
-    </a>
-  );
-
-  const Gallery = ({ gallery }) => (
-    <div className="gallery-grid">
-      {gallery.map((data, index) => (
-        <ImageGallery key={data.title} data={data} />
-      ))}
-    </div>
-  );
+  // PropertiesList Compoenent
+  const PropertiesList = () => {
+    return loading ? (
+      "⏲ loading ... "
+    ) : (
+      <HorizontalMediaScroller>
+        {data.hits.map(
+          ({
+            id,
+            coverPhoto: { url: imageSrc },
+            imageAlt,
+            title,
+            price,
+            type,
+          }) => (
+            <PropertyCard
+              key={id}
+              data={{ imageSrc, imageAlt, title, price, type }}
+              id={`reccomendedProperty_${id}`}
+              attr={{ tabIndex: 0 }}
+            />
+          )
+        )}
+      </HorizontalMediaScroller>
+    );
+  };
 
   return (
     <div className="wrapper">
       <header className="header">
         <div className="header_title">
-          <h2>{content.tag}</h2>
+          <span>{content.tag}</span>
+          <h2>{content.title}</h2>
         </div>
       </header>
-      <Gallery gallery={data} />
+      <PropertiesList />
     </div>
   );
 };
 
-export default Discover_v3;
+export default RecommendedProperties_v3;
