@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const usePropertiesFetch = () => {
+export const usePropertiesFetch = (hitsPerPage) => {
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -12,7 +12,7 @@ export const usePropertiesFetch = () => {
         params: {
             locationExternalIDs: '5002,6020',
             purpose: 'for-rent',
-            hitsPerPage: '6',
+            hitsPerPage: (hitsPerPage ? hitsPerPage : '6'),
             page: '0',
             lang: 'en',
             sort: 'city-level-score',

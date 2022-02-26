@@ -2,9 +2,9 @@ import React from "react";
 // Styles
 import "./PropertyCard.scss";
 
-const PropertyCard = ({ data: { imageSrc, imageAlt, title, price, type } }) => {
+const PropertyCard = ({ data: { imageSrc, imageAlt, title, price, type }, className, id, attr }) => {
   return (
-    <figure className="property-card">
+    <figure className={className ? `property-card ${className}` : 'property-card'} id={id || id} {...attr}>
       <picture className="property_image">
         <img src={imageSrc} alt={imageAlt} lazy='true' />
       </picture>
