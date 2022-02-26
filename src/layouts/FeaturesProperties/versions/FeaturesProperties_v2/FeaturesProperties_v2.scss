@@ -1,6 +1,6 @@
 #FeaturesProperties[data-version="2"] {
   --headerSize: max(55ch, 40vw);
-  --padding: 5vw;
+  --padding: max(var(--spacing-xl), 5vw);
   display: grid;
   min-height: 100vh;
   min-width: 100%;

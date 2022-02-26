@@ -61,10 +61,22 @@
   .horizontal-media-scroller {
     --size: 100%;
     flex-grow: 1;
+    gap: unset;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline-start: unset;
 
     > * {
       scroll-snap-align: center;
+    }
+  }
+
+  // Property Card
+  .property-card {
+    .property_image {
+      flex-grow: 1;
+    }
+    .property_content {
+      flex-grow: 0;
     }
   }
 }
