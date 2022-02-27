@@ -1,8 +1,9 @@
-#RecommendedProperties[data-version="3"] {
+#Categories[data-version="3"] {
   --padding: max(var(--spacing-xl), 5vw);
   display: flex;
   flex-direction: column;
   gap: var(--padding);
+  min-height: 100vh;
   padding: var(--padding);
   align-items: stretch;
 

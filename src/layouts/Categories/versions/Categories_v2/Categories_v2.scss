@@ -1,0 +1,58 @@
+#Categories[data-version="2"] {
+  --padding: max(var(--spacing-xl), 5vw);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding);
+  min-height: 100vh;
+  padding: var(--padding);
+  align-items: stretch;
+
+  // Header
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .header_title {
+      --fontSize: max(5vw, 40px);
+      font-size: var(--fontSize);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      max-width: 25ch;
+
+      span {
+        color: var(--primaryColor);
+        font-size: min(12px, 0.6em);
+        text-transform: uppercase;
+        line-height: 1;
+      }
+      h2 {
+        font-size: 1em;
+      }
+    }
+  }
+
+  // Properties Gallery
+  .horizontal-media-scroller {
+    --size: minmax(25ch, 1fr);
+    flex-grow: 1;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline-start: unset;
+
+    > * {
+      scroll-snap-align: center;
+    }
+  }
+
+  // Property Card
+  .property-card {
+    .property_image {
+      flex-grow: 1;
+    }
+    .property_content {
+      flex-grow: 0;
+    }
+  }
+}
