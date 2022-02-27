@@ -9,10 +9,10 @@ const App = () => {
       <Discover version={2} />
       <RecommendedProperties version={3} />
       <Categories version={3} />
+      <Offers version={1} />
       <Discounts />
       <Instagram />
       <Newsletter />
-      <Offers />
       <Recommendations />
       <Reviews />
       <TopRated />

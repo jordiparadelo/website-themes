@@ -1,13 +1,32 @@
 import React from "react";
 // Styles
 import "./Offers.scss";
-const Offers = () => {
+// Version
+import { VersionProvider } from "./versions/VersionContext.js";
+// Data
+import { DataProvider } from "./DataContext";
+
+// Default
+export const Default = () => {
   return (
-    <section id="Offers">
+    <>
       <header>
-        <h2>Offers</h2>
+        <h2>Offers Default</h2>
       </header>
-    </section>
+    </>
+  );
+};
+
+const Offers = ({ version }) => {
+  return (
+    <DataProvider>
+      <section id="Offers" data-version={version || null}>
+        {version
+          ? <VersionProvider version={version} />
+          : <Default />
+        }
+      </section>
+    </DataProvider>
   );
 };
 
