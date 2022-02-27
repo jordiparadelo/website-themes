@@ -1,38 +1,42 @@
-import React, { useRef, useState } from "react";
-import { HorizontalMediaScroller, PropertyCard } from "../../../../components";
+import React from "react";
+import { HorizontalMediaScroller } from "../../../../components";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Categories_v3.scss";
 
 const Categories_v3 = () => {
-  const { data, content, loading } = useDataContext();
+  const { data, content } = useDataContext();
 
-  // PropertiesList Compoenent
-  const PropertiesList = () => {
-    return loading ? (
-      "⏲ loading ... "
-    ) : (
-      <HorizontalMediaScroller>
-        {data.hits.map(
-          ({
-            id,
-            coverPhoto: { url: imageSrc },
-            imageAlt,
-            title,
-            price,
-            type,
-          }) => (
-            <PropertyCard
-              key={id}
-              data={{ imageSrc, imageAlt, title, price, type }}
-              id={`reccomendedProperty_${id}`}
-              attr={{ tabIndex: 0 }}
-            />
-          )
-        )}
-      </HorizontalMediaScroller>
-    );
-  };
+  // CaegoriesList Compoenent
+  const CaegoriesList = () => (
+    <div className="category-list">
+      <menu className="category_menu">
+        <HorizontalMediaScroller>
+          {data.map(({ image, title, link }, index) => (
+            <a
+              key={title.split(" ").join("-") + "_link_" + index}
+              className="category_item"
+              href={link}
+              aria-label={`Go to ${title} category`}
+            >
+              <figure className="category_card">
+                <picture className="card_avatar">
+                  <img
+                    src={image}
+                    alt={`image of ${title}`}
+                    width="300"
+                    height="300"
+                    lazy={true}
+                  />
+                </picture>
+                <figcaption className="card_title">{title}</figcaption>
+              </figure>
+            </a>
+          ))}
+        </HorizontalMediaScroller>
+      </menu>
+    </div>
+  );
 
   return (
     <div className="wrapper">
@@ -42,7 +46,7 @@ const Categories_v3 = () => {
           <h2>{content.title}</h2>
         </div>
       </header>
-      <PropertiesList />
+      <CaegoriesList />
     </div>
   );
 };
