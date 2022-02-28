@@ -1,17 +1,23 @@
 #Offers[data-version="3"] {
   --padding: max(5vw, 24px);
-  padding: var(--padding);
+  --maxWidth: max(800px, calc(100% - calc(var(--spacing-xl) * 2)));
+  background-color: var(--lightColor);
+  margin: 0 auto;
+  max-width: var(--maxWidth);
+  width: 100%;
+  border-radius: var(--corners-xxl);
   display: flex;
   flex-direction: column;
-  gap: var(--padding);
+  gap: var(--gap);
+  padding: var(--padding) 0;
 
   .wrapper {
     display: flex;
     gap: var(--padding);
     flex-wrap: wrap;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-
     // Header
     .header {
       display: flex;
@@ -57,20 +63,79 @@
       }
     }
 
+    // Category List
+    .category-list {
+      max-width: 100%;
+      border-radius: var(--corners-xxl);
+      background: var(--lightColor);
+      flex-grow: 1;
+
+      .horizontal-media-scroller {
+        padding: max(var(--spacing), 2vw);
+      }
+
+      .category_item {
+        display: block;
+        color: inherit;
+
+        .category_card {
+          --padding: var(--spacing-xl);
+          --fontSize: max(18px, 1vw);
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          padding: var(--padding);
+          gap: var(--padding);
+          font-size: var(--fontSize);
+          text-align: center;
+          border-radius: var(--corners-xxl);
+          transition: all 0.5s var(--ease);
+
+          .card_avatar {
+            --size: 180px;
+            height: var(--size);
+            width: var(--size);
+            border-radius: var(--corners-round);
+            overflow: hidden;
+
+            img {
+              max-width: 100%;
+              max-height: 100%;
+              object-fit: cover;
+              transition: transform 0.5s var(--ease);
+            }
+          }
+          .card_title {
+          }
+        }
+        // Category Card States
+        &:is(:hover, :focus) {
+          .category_card {
+            background-color: white;
+            box-shadow: var(--shadow-xl);
+          }
+        }
+        &:not(:hover, :focus) {
+          .card_avatar {
+            img {
+              transform: scale(1.5);
+            }
+          }
+        }
+      }
+    }
+
     // Properties Gallery
     .horizontal-media-scroller {
-      --3-columns: calc(33% - calc(var(--gap) / 2));
-      --size: max(25ch, var(--3-columns));
-    }
-    // Propertie card
-    .property-card {
-      border-radius: var(--corners-xxl);
-      overflow: hidden;
-      .property_image {
-        flex-grow: 1;
-      }
-      .property_content {
-        flex-grow: 0;
+      --maxSize: max(fit-content, 25%);
+      --size: minmax(var(--maxSize), 1fr);
+      gap: unset;
+      flex-grow: 1;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline-start: unset;
+
+      > * {
+        scroll-snap-align: center;
       }
     }
   }

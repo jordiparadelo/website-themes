@@ -7,37 +7,39 @@ import { useDataContext } from "../../DataContext";
 const Offers_v2 = () => {
   const { data, content, loading } = useDataContext();
 
-  const PropertiesList = ({ properties, loading }) => (
+  // OfferCard Component
+  const OfferCard = ({ data: { title, description, image } }) => (
+    <figure className="offer-card">
+      <picture className="offer_image">
+        <img src={image.src} alt={image.alt} />
+      </picture>
+      <figcaption className="offer_content">
+        <time datetime={description.date} className="content_date">
+          {description.date}
+        </time>
+        <h3 className="content_tile">{title}</h3>
+        <button className="content_cta ghost">Find More about it</button>
+      </figcaption>
+    </figure>
+  );
+  // OffersList Component
+  const OffersList = ({ offers }) => (
     <HorizontalMediaScroller>
-      {properties.map(
-        ({
-          id,
-          coverPhoto: { url: imageSrc },
-          imageAlt,
-          title,
-          price,
-          type,
-        }) => (
-          <PropertyCard
-            key={id}
-            data={{ imageSrc, imageAlt, title, price, type }}
-          />
-        )
-      )}
+      {offers.map(({ title, description, image }, index) => (
+        <OfferCard key={title} data={{ title, description, image }} />
+      ))}
     </HorizontalMediaScroller>
   );
 
   return (
     <>
       <header className="header">
-        <div className="wrapper">
-          <div className="header_title">
-            <span>{content.tag}</span>
-            <h2>{content.title}</h2>
-          </div>
+        <div className="header_title">
+          <span>{content.tag}</span>
+          <h2>{content.title}</h2>
         </div>
       </header>
-      {loading ? "⏲ loading ... " : <PropertiesList properties={data.hits} />}
+      {loading ? "⏲ loading ... " : <OffersList offers={data} />}
     </>
   );
 };

@@ -1,111 +1,140 @@
 #Offers[data-version="2"] {
-  --headerSize: max(55ch, 40vw);
-  --padding: max(var(--spacing-xl), 5vw);
-  display: grid;
+  --gap: max(var(--spacing-xxl), 5vw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap);
   min-height: 100vh;
-  min-width: 100%;
+  padding: var(--spacing-xl) 0;
 
-  > * {
-    grid-area: 1/1;
-    align-self: stretch;
+  & > * {
+    padding: 0 var(--spacing-xl);
   }
 
   // Header
   .header {
     display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-grow: 1;
-    max-width: max(var(--headerSize), 80%);
-    background: var(--primaryColor);
-    z-index: -1;
+    flex-wrap: wrap;
+    gap: 5vw;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
 
-    .wrapper {
+    .header_title {
+      --fontSize: max(5vw, 40px);
+      font-size: var(--fontSize);
       display: flex;
-      justify-content: center;
       flex-direction: column;
-      max-width: var(--headerSize);
-      padding: var(--padding);
-      gap: var(--padding);
-      .header_title {
-        --fontSize: max(5vw, 40px);
-        font-size: var(--fontSize);
-        display: flex;
-        flex-direction: column;
 
-        span {
-          font-size: min(12px, 0.6em);
-          text-transform: uppercase;
-          line-height: 1;
-        }
-        h2 {
-          font-size: 1em;
-          font-weight: 100;
-        }
+      span {
+        font-size: min(12px, 0.6em);
+        text-transform: uppercase;
+        line-height: 1;
       }
-      .header_description {
-        --fontSize: max(1.5vw, 18px);
-        font-size: var(--fontSize);
-        line-height: 1.5em;
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing);
+      h2 {
+        font-size: 1em;
+      }
+    }
+  }
 
-        > * {
-          flex-basis: 20ch;
-          flex-grow: 1;
+  // Offer Card
+  .offer-card {
+    display: grid;
+
+    > * {
+      grid-area: 1/1;
+    }
+
+    .offer_image {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-basis: 300px;
+      overflow: hidden;
+
+      img {
+        flex-grow: 1;
+        min-width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.5s var(--ease);
+      }
+    }
+
+    .offer_content {
+      --fontSize: max(16px, 1.2vw);
+      --padding: var(--spacing);
+
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+      font-size: var(--fontSize);
+      padding: var(--padding);
+      margin: var(--padding);
+      background-color: var(--lightColor);
+      margin-top: auto;
+      transition: all 0.5s var(--ease);
+
+      .content_date {
+        --size: 32px;
+        padding: 0 var(--spacing);
+        display: inline-flex;
+        align-items: center;
+        min-height: var(--size);
+        border-radius: var(--corners-round);
+        border: 1px solid var(--fontColor);
+        font-size: max(14px, 0.7em);
+        white-space: nowrap;
+        line-height: 1em;
+        opacity: 0.4;
+        width: fit-content;
+        overflow: hidden;
+        transition: inherit;
+        transition-duration: 0.6s;
+      }
+
+      .content_tile {
+        font-size: 1.5em;
+        font-weight: 400;
+      }
+
+      .content_cta {
+        padding: unset;
+        text-transform: uppercase;
+        transition: inherit;
+      }
+    }
+
+    // Offer Card States
+    &:not(:hover, :focus-visible) {
+      .offer_content {
+        color: var(--lightColor);
+        margin-bottom: 0;
+        background-color: transparent;
+
+        .content_date {
+          transform: translateY(100%);
+          transition-duration: 0.5s;
+          transition-delay: 0s;
+          opacity: 0;
+        }
+        .content_cta {
+          opacity: 0;
         }
       }
     }
   }
+
   // Properties Gallery
   .horizontal-media-scroller {
+    --size: minmax(30ch, 1fr);
+    --padding: 0 var(--spacing);
     flex-grow: 1;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline-start: unset;
 
-    padding-left: var(--headerSize);
-    padding-top: var(--padding);
-    padding-right: var(--padding);
-    padding-bottom: var(--padding);
-
-    align-self: center;
-    min-height: max(80vh, 300px);
-
-    @media screen and (max-width: 350px) {
-      --size: 100%;
-      gap: var(--padding);
-    }
-  }
-  // Propertie card
-  .property-card {
-    .property_image {
-      flex-grow: 1;
-    }
-    .property_content {
-      flex-grow: 0;
-    }
-  }
-
-  @media screen and (max-width: 750px) {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: unset;
-    background: var(--primaryColor);
-
-    // Header
-    .header {
-      background: unset;
-      min-width: 100%;
-      z-index: 0;
-
-      .wrapper {
-        display: flex;
-        z-index: unset;
-      }
-    }
-
-    // Properties Gallery
-    .horizontal-media-scroller {
-      padding: var(--padding);
+    > * {
+      scroll-snap-align: center;
     }
   }
 }
