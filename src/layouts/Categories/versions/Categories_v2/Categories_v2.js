@@ -56,7 +56,7 @@ const Categories_v2 = () => {
               alt={`image of ${title}`}
               width="300"
               height="300"
-              lazy={true}
+              lazy="true"
             />
           </picture>
         </figure>

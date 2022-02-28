@@ -26,7 +26,7 @@ const Categories_v3 = () => {
                     alt={`image of ${title}`}
                     width="300"
                     height="300"
-                    lazy={true}
+                    lazy="true"
                   />
                 </picture>
                 <figcaption className="card_title">{title}</figcaption>

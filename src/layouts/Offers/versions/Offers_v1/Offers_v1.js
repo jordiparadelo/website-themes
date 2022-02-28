@@ -14,7 +14,7 @@ const Offers_v1 = () => {
         <img src={image.src} alt={image.alt} />
       </picture>
       <figcaption className="offer_content">
-        <time datetime={description.date} className="content_date">
+        <time dateTime={description.date} className="content_date">
           {description.date}
         </time>
         <h3 className="content_tile">{title}</h3>

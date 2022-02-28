@@ -8,8 +8,9 @@
   border-radius: var(--corners-xxl);
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
+  gap: var(--padding);
   padding: var(--padding) 0;
+  align-items: center;
 
   .wrapper {
     display: flex;
@@ -17,7 +18,6 @@
     flex-wrap: wrap;
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
     // Header
     .header {
       display: flex;
@@ -62,81 +62,78 @@
         }
       }
     }
+  }
 
-    // Category List
-    .category-list {
-      max-width: 100%;
-      border-radius: var(--corners-xxl);
-      background: var(--lightColor);
-      flex-grow: 1;
+  // Offers List
+  .horizontal-media-scroller {
+    --size: max(30ch, calc(100% / 2.2));
+    --wrapperSize: 1200px;
+    --paddingLeft: calc(calc(100% - var(--wrapperSize)) / 2);
+    --padding: 0 var(--spacing);
+    flex-grow: 1;
+    scroll-snap-type: x mandatory;
+    padding-left: var(--paddingLeft);
+    padding-right: var(--spacing-xl);
+    scroll-padding-inline-start: var(--paddingLeft);
 
-      .horizontal-media-scroller {
-        padding: max(var(--spacing), 2vw);
-      }
-
-      .category_item {
-        display: block;
-        color: inherit;
-
-        .category_card {
-          --padding: var(--spacing-xl);
-          --fontSize: max(18px, 1vw);
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          padding: var(--padding);
-          gap: var(--padding);
-          font-size: var(--fontSize);
-          text-align: center;
-          border-radius: var(--corners-xxl);
-          transition: all 0.5s var(--ease);
-
-          .card_avatar {
-            --size: 180px;
-            height: var(--size);
-            width: var(--size);
-            border-radius: var(--corners-round);
-            overflow: hidden;
-
-            img {
-              max-width: 100%;
-              max-height: 100%;
-              object-fit: cover;
-              transition: transform 0.5s var(--ease);
-            }
-          }
-          .card_title {
-          }
-        }
-        // Category Card States
-        &:is(:hover, :focus) {
-          .category_card {
-            background-color: white;
-            box-shadow: var(--shadow-xl);
-          }
-        }
-        &:not(:hover, :focus) {
-          .card_avatar {
-            img {
-              transform: scale(1.5);
-            }
-          }
-        }
-      }
+    // Snap Configuration
+    > * {
+      scroll-snap-align: center;
     }
 
-    // Properties Gallery
-    .horizontal-media-scroller {
-      --maxSize: max(fit-content, 25%);
-      --size: minmax(var(--maxSize), 1fr);
-      gap: unset;
-      flex-grow: 1;
-      scroll-snap-type: x mandatory;
-      scroll-padding-inline-start: unset;
+    // Offer Card
+    .offer-card {
+      display: grid;
+      border-radius: var(--corners-xl);
+      overflow: hidden;
 
       > * {
-        scroll-snap-align: center;
+        grid-area: 1/1;
       }
+
+      .offer_image {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 300px;
+        overflow: hidden;
+
+        img {
+          flex-grow: 1;
+          min-width: 100%;
+          height: 300px;
+          object-fit: cover;
+          transition: transform 0.5s var(--ease);
+        }
+      }
+
+      .offer_content {
+        --fontSize: max(16px, 1.2vw);
+        --padding: var(--spacing);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        font-size: var(--fontSize);
+        padding: var(--padding);
+        margin: var(--padding);
+        background-color: var(--lightColor);
+        margin-top: auto;
+        transition: all 0.5s var(--ease);
+        border-radius: var(--corners);
+        overflow: hidden;
+      }
+    }
+  }
+  // Media Query
+  @media screen and (max-width: 1200px) {
+    // Header
+    .header {
+      padding: 0 var(--padding);
+    }
+
+    // Offers List
+    .horizontal-media-scroller {
+      padding: 0 var(--spacing-xl);
     }
   }
 }

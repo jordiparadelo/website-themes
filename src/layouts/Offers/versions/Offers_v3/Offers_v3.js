@@ -14,7 +14,7 @@ const Offers_v3 = () => {
         <img src={image.src} alt={image.alt} />
       </picture>
       <figcaption className="offer_content">
-        <time datetime={description.date} className="content_date">
+        <time dateTime={description.date} className="content_date">
           {description.date}
         </time>
         <h3 className="content_tile">{title}</h3>
@@ -32,21 +32,23 @@ const Offers_v3 = () => {
   );
 
   return (
-    <div className="wrapper">
-      <header className="header">
-        <div className="header_title">
-          <span>{content.tag}</span>
-          <h2>{content.title}</h2>
-        </div>
-        <div className="header_actions">
-          <button disabled data-previous>
-            ←
-          </button>
-          <button data-next> → </button>
-        </div>
-      </header>
+    <>
+      <div className="wrapper">
+        <header className="header">
+          <div className="header_title">
+            <span>{content.tag}</span>
+            <h2>{content.title}</h2>
+          </div>
+          <div className="header_actions">
+            <button disabled data-previous>
+              ←
+            </button>
+            <button data-next> → </button>
+          </div>
+        </header>
+      </div>
       {loading ? "⏲ loading ... " : <OffersList offers={data} />}
-    </div>
+    </>
   );
 };
 
