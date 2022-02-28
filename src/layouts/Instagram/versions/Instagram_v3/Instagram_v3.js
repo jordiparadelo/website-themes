@@ -2,9 +2,9 @@ import React from "react";
 import { HorizontalMediaScroller } from "../../../../components";
 import { useDataContext } from "../../DataContext";
 // // Styles
-// import "./Categories_v3.scss";
+// import "./Instagram_v3.scss";
 
-const Categories_v3 = () => {
+const Instagram_v3 = () => {
   const { data, content } = useDataContext();
 
   // CaegoriesList Compoenent
@@ -51,4 +51,4 @@ const Categories_v3 = () => {
   );
 };
 
-export default Categories_v3;
+export default Instagram_v3;

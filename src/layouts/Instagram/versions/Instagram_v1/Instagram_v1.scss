@@ -1,0 +1,110 @@
+#Instagram[data-version="1"] {
+  height: 100vh;
+  overflow: hidden;
+  // Header
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xxl);
+    text-align: center;
+    padding: var(--spacing);
+    min-width: 25ch;
+    aspect-ratio: 1/1;
+
+    .header_title {
+      --fontSize: max(3vw, 40px);
+      font-size: var(--fontSize);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      span {
+        font-size: min(12px, 0.6em);
+        text-transform: uppercase;
+        line-height: 1;
+      }
+      h2 {
+        font-size: 1em;
+      }
+    }
+
+    // cta
+    .button {
+      border-radius: var(--corners-round);
+      background-color: var(--fontColor);
+      color: var(--lightColor);
+      text-transform: uppercase;
+    }
+  }
+
+  // Image Grid
+  .images-grid {
+    --gap: var(--spacing);
+    flex-grow: 1;
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-flow: row;
+    overflow: hidden;
+    align-content: center;
+    position: relative;
+    overflow: hidden;
+    max-height: 100%;
+
+    .grid_image {
+      --maxSize: 55vh;
+      --size: max(300px, var(--maxSize));
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      border-radius: var(--corners);
+      overflow: hidden;
+      min-height: var(--size);
+
+      > picture {
+        flex-grow: 1;
+        max-width: 100%;
+
+        img {
+          flex-grow: 1;
+          min-width: 100%;
+          min-height: 100%;
+          object-fit: cover;
+          max-width: 100%;
+        }
+      }
+
+      // imagenes pares
+      &:nth-child(odd) {
+        grid-row: 2 span;
+      }
+    }
+    // Gradients TOP & BOTTOM
+    &:before,
+    &:after {
+      --deg: "#";
+      --gradient: linear-gradient(
+        var(--deg),
+        var(--sectionBackground, white),
+        transparent
+      );
+      content: "";
+      height: 25%;
+      position: absolute;
+      background: var(--gradient);
+      left: 0;
+      right: 0;
+    }
+
+    &:before {
+      --deg: 180deg;
+      top: 0;
+    }
+    &:after {
+      --deg: 0deg;
+      bottom: 0;
+    }
+  }
+}

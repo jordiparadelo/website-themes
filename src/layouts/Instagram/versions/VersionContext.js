@@ -1,0 +1,42 @@
+import React, { useContext, useEffect } from 'react';
+// Components
+import { Default } from '../Instagram'
+import Instagram_v1 from './Instagram_v1/Instagram_v1'
+import Instagram_v2 from './Instagram_v2/Instagram_v2'
+import Instagram_v3 from './Instagram_v3/Instagram_v3'
+
+// Context
+const VersionContext = React.createContext()
+
+// Custom Hook
+export function useVersionContext() {
+    return useContext(VersionContext)
+}
+
+// Provider
+export const VersionProvider = ({ version }) => {
+    const FEATURES_PROPERTIES_VERSIONS = {
+        1: () => <Instagram_v1 />,
+        2: () => <Instagram_v2 />,
+        3: () => <Instagram_v3 />,
+    };
+
+    // Dynamic Import of Styles
+    useEffect(() => {
+        if (version && FEATURES_PROPERTIES_VERSIONS[version] !== undefined) {
+            // INFO: Only for testing purposes - then the styles will be provide by the same global style
+            // Import Global Styles from selected version
+            // import(`../../../styles/versions/global_v${version}.scss`)
+
+            // Import Component Styles from selected version
+            import(`./Instagram_v${version}/Instagram_v${version}.scss`)
+        }
+    }, [version])
+
+    const VERSION_SELECTED = FEATURES_PROPERTIES_VERSIONS[version] ? FEATURES_PROPERTIES_VERSIONS[version]() : <Default />
+
+    return (
+        <VersionContext.Provider value={version}> {VERSION_SELECTED}</VersionContext.Provider>
+    )
+
+}

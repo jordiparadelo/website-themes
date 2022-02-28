@@ -12,7 +12,7 @@ const Discover_v1 = () => {
     <a href={link} className="image-gallery">
       <figure className="container">
         <picture className="image_cover">
-          <img src={image} alt={`image of ${title}`} />
+          <img src={image} alt={title} />
         </picture>
         <figcaption className="image_content">
           <h3>{title}</h3>

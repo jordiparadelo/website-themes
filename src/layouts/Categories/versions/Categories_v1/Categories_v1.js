@@ -35,9 +35,9 @@ const Categories_v1 = () => {
           <picture>
             <img
               src={image}
-              alt={`image of ${title}`}
-              width="300"
-              height="300"
+              alt={title}
+              width="300px"
+              height="300px"
             />
           </picture>
         </figure>
