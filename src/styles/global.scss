@@ -48,6 +48,7 @@ body {
 a {
   text-decoration: unset;
 }
+// Buttons
 button,
 .button {
   --background: var(--primaryColor);
@@ -82,6 +83,42 @@ button,
     color: var(--primaryColor);
     &:is(:hover, :focus) {
       --background: var(--lightColor);
+    }
+  }
+}
+
+// Form
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
+
+  input:not([type="checkbox"]) {
+    --size: 40px;
+    min-height: var(--size);
+    padding: 0 var(--spacing);
+  }
+
+  .input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+
+    input:not([type="checkbox"]) {
+      flex-grow: 1;
+      min-width: 100%;
+    }
+  }
+
+  .form_conditions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    .input-group {
+      font-size: 1em;
+      line-height: 1em;
+      align-items: flex-start;
+      flex-flow: row;
     }
   }
 }

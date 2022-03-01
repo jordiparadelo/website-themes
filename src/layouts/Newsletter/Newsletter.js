@@ -1,13 +1,32 @@
 import React from "react";
 // Styles
 import "./Newsletter.scss";
-const Newsletter = () => {
+// Version
+import { VersionProvider } from "./versions/VersionContext.js";
+// Data
+import { DataProvider } from "./DataContext";
+
+// Default
+export const Default = () => {
   return (
-    <section id="Newsletter">
+    <>
       <header>
-        <h2>Newsletter</h2>
+        <h2>Newsletter default</h2>
       </header>
-    </section>
+    </>
+  );
+};
+
+const Newsletter = ({ version }) => {
+  return (
+    <DataProvider>
+      <section id="Newsletter" data-version={version || null}>
+        {version
+          ? <VersionProvider version={version} />
+          : <Default />
+        }
+      </section>
+    </DataProvider>
   );
 };
 

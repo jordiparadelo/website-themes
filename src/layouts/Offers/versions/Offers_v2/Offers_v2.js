@@ -26,7 +26,7 @@ const Offers_v2 = () => {
   const OffersList = ({ offers }) => (
     <HorizontalMediaScroller>
       {offers.map(({ title, description, image }, index) => (
-        <OfferCard key={title} data={{ title, description, image }} />
+        <OfferCard key={title + "_" + index} data={{ title, description, image }} />
       ))}
     </HorizontalMediaScroller>
   );

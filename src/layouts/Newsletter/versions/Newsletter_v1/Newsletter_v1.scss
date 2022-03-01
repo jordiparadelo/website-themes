@@ -1,0 +1,139 @@
+#Newsletter[data-version="1"] {
+  --gap: max(var(--spacing-xxl), 5vw);
+  --sectionBackground: var(--lightColor);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  min-height: 100vh;
+  padding: var(--spacing-xl);
+  align-items: stretch;
+  overflow: hidden;
+  background-color: var(--sectionBackground);
+
+  > * {
+    max-height: 100%;
+    flex-grow: 1;
+    flex-basis: 32ch;
+  }
+
+  // Header
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--spacing-xxl);
+    max-width: 100%;
+
+    .header_title {
+      --fontSize: max(3vw, 40px);
+      font-size: var(--fontSize);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      span {
+        font-size: min(12px, 0.6em);
+        text-transform: uppercase;
+        line-height: 1;
+      }
+      h2 {
+        font-size: 1em;
+      }
+    }
+
+    // Contact Form
+    .contact-form {
+      gap: var(--spacing-lg);
+      // Email Input
+      [data-input="email"] {
+        position: relative;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1px;
+        flex-grow: 1;
+
+        input {
+          --fontSize: 24px;
+          background: unset;
+          border: unset;
+          padding: unset;
+          font-size: var(--fontSize);
+          transition: all 0.1s var(--ease);
+
+          // Input states
+          &:focus {
+            outline: none;
+            font-size: calc(var(--fontSize) * 0.8);
+            transition: all 0.2s var(--ease);
+          }
+        }
+
+        // Outline
+        &:before,
+        &:after {
+          --stroke: 1px;
+          --background: var(--fontColor);
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          background: var(--background);
+          height: var(--stroke);
+          max-width: 1000px;
+          transition: all 1s var(--ease);
+        }
+        &:before {
+          opacity: 0.2;
+        }
+        &:after {
+          --background: var(--primaryColor);
+        }
+
+        // Input Group States
+        &:not([data-focused="true"]) {
+          // Outline
+          &:after {
+            max-width: 0px;
+          }
+        }
+      }
+
+      // Submit Input
+      [data-input="submit"] {
+        flex-grow: 1;
+        display: flex;
+        justify-content: stretch;
+        margin-top: var(--spacing);
+
+        [type="submit"] {
+          --background: var(--fontColor);
+          --corners: var(--corners-round);
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          color: var(--lightColor);
+        }
+      }
+    }
+  }
+
+  // Image
+  .image {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: var(--corners);
+    flex-grow: 10;
+
+    img {
+      flex-grow: 1;
+      width: 100%;
+      heigth: 100%;
+      object-fit: cover;
+    }
+  }
+}
