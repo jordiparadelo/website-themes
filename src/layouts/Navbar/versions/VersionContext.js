@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 // Components
-import { Default } from '../Categories'
-import Categories_v1 from './Categories_v1/Categories_v1'
-import Categories_v2 from './Categories_v2/Categories_v2'
-import Categories_v3 from './Categories_v3/Categories_v3'
+import { Default } from '../Navbar'
+import Navbar_v1 from './Navbar_v1/Navbar_v1'
+import Navbar_v2 from './Navbar_v2/Navbar_v2'
+import Navbar_v3 from './Navbar_v3/Navbar_v3'
 
 // Context
 const VersionContext = React.createContext()
@@ -16,9 +16,9 @@ export function useVersionContext() {
 // Provider
 export const VersionProvider = ({ version }) => {
     const FEATURES_PROPERTIES_VERSIONS = {
-        1: () => <Categories_v1 />,
-        2: () => <Categories_v2 />,
-        3: () => <Categories_v3 />,
+        1: () => <Navbar_v1 />,
+        2: () => <Navbar_v2 />,
+        3: () => <Navbar_v3 />,
     };
 
     // Dynamic Import of Styles
@@ -29,7 +29,7 @@ export const VersionProvider = ({ version }) => {
             // import(`../../../styles/versions/global_v${version}.scss`)
 
             // Import Component Styles from selected version
-            import(`./Categories_v${version}/Categories_v${version}.scss`)
+            import(`./Navbar_v${version}/Navbar_v${version}.scss`)
         }
     }, [version])
 

@@ -1,6 +1,6 @@
 import React from "react";
 // Styles
-import "./Categories.scss";
+import "./Navbar.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
@@ -10,24 +10,24 @@ import { DataProvider } from "./DataContext";
 export const Default = () => {
   return (
     <>
-      <header>
-        <h2>Categories default</h2>
-      </header>
+      <nav>
+        <h2>Navbar default</h2>
+      </nav>
     </>
   );
 };
 
-const Categories = ({ version }) => {
+const Navbar = ({ version }) => {
   return (
     <DataProvider>
-      <section id="Categories" data-version={version || null}>
+      <nav id="Navbar" data-version={version || null}>
         {version
           ? <VersionProvider version={version} />
           : <Default />
         }
-      </section>
+      </nav>
     </DataProvider>
   );
 };
 
-export default Categories;
+export default Navbar;

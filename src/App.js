@@ -1,17 +1,38 @@
 import React from "react";
-import { Welcome, FeaturesProperties, Discover, Categories, Discounts, Instagram, Newsletter, Offers, Recommendations, RecommendedProperties, Reviews, TopRated } from "./layouts/index";
+import {
+  Navbar,
+  Hero,
+  Welcome,
+  FeaturesProperties,
+  Discover,
+  Categories,
+  Discounts,
+  Instagram,
+  Newsletter,
+  Offers,
+  Recommendations,
+  RecommendedProperties,
+  Reviews,
+  TopRated,
+  Footer,
+} from "./layouts/index";
 
 const App = () => {
   return (
     <>
-      <Welcome version={2} />
-      <FeaturesProperties version={2} />
-      <Discover version={2} />
-      <RecommendedProperties version={2} />
-      <Categories version={2} />
-      <Offers version={2} />
-      <Instagram version={2} />
-      <Newsletter version={3} />
+      <Navbar version={1} />
+      <main>
+        <Hero version={1} />
+        <Welcome version={2} />
+        <FeaturesProperties version={2} />
+        <Discover version={2} />
+        <RecommendedProperties version={2} />
+        <Categories version={2} />
+        <Offers version={2} />
+        <Instagram version={2} />
+        <Newsletter version={3} />
+      </main>
+      <Footer version={3} />
       {/* <Discounts /> */}
       {/* <Recommendations /> */}
       {/* <Reviews /> */}

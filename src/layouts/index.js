@@ -1,3 +1,5 @@
+export { default as Navbar } from './Navbar/Navbar';
+export { default as Hero } from './Hero/Hero';
 export { default as Welcome } from './Welcome/Welcome';
 export { default as FeaturesProperties } from './FeaturesProperties/FeaturesProperties';
 export { default as Discover } from './Discover/Discover';
@@ -10,3 +12,4 @@ export { default as Recommendations } from './Recommendations/Recommendations';
 export { default as RecommendedProperties } from './RecommendedProperties/RecommendedProperties';
 export { default as Reviews } from './Reviews/Reviews';
 export { default as TopRated } from './TopRated/TopRated';
+export { default as Footer } from './Footer/Footer';

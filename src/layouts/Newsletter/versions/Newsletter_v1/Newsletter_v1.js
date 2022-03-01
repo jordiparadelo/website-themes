@@ -29,7 +29,7 @@ const Categories_v1 = () => {
           className="input-group"
           data-input="email"
           ref={inputRef}
-          // data-focused={inputFocused}
+        // data-focused={inputFocused}
         >
           {label}
           <input

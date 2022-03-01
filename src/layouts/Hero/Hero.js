@@ -1,6 +1,6 @@
 import React from "react";
 // Styles
-import "./Footer.scss";
+import "./Hero.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
@@ -11,23 +11,23 @@ export const Default = () => {
   return (
     <>
       <header>
-        <h2>Footer default</h2>
+        <h2>Hero default</h2>
       </header>
     </>
   );
 };
 
-const Footer = ({ version }) => {
+const Hero = ({ version }) => {
   return (
     <DataProvider>
-      <footer id="Footer" data-version={version || null}>
+      <section id="Hero" data-version={version || null}>
         {version
           ? <VersionProvider version={version} />
           : <Default />
         }
-      </footer>
+      </section>
     </DataProvider>
   );
 };
 
-export default Footer;
+export default Hero;
