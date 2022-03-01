@@ -4,8 +4,8 @@ import { usePropertiesFetch } from '../../hooks/useFetch';
 
 // Data
 const content = {
-    tag: "Categories",
-    title: "Filter by our category to fits your travel desires.",
+    tag: "Instagram",
+    title: "Inspire your trip.",
 };
 const categories = [
     {

@@ -1,21 +1,22 @@
 #Instagram[data-version="3"] {
-  --padding: max(5vw, 24px);
-  padding: var(--padding);
+  --padding: max(var(--spacing-xl), 5vw);
   display: flex;
   flex-direction: column;
   gap: var(--padding);
+  align-items: stretch;
+  padding: var(--padding) 0;
 
   .wrapper {
     display: flex;
-    gap: var(--padding);
-    flex-wrap: wrap;
+    padding: 0 var(--padding);
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     // Header
     .header {
       display: flex;
-      width: 100%;
+      flex-grow: 1;
+      flex-direction: column;
       align-items: center;
       text-align: center;
 
@@ -35,83 +36,35 @@
         }
       }
     }
+  }
 
-    // Category List
-    .category-list {
-      max-width: 100%;
-      border-radius: var(--corners-xxl);
-      background: var(--lightColor);
-      flex-grow: 1;
+  // Instagram Gallery
+  .horizontal-media-scroller {
+    --size: minmax(25ch, 1fr);
+    flex-grow: 1;
+    scroll-snap-type: x mandatory;
+    flex-grow: 1;
+    padding: 0 var(--padding);
+    gap: var(--spacing);
 
-      .horizontal-media-scroller {
-        padding: max(var(--spacing), 2vw);
-      }
-
-      .category_item {
-        display: block;
-        color: inherit;
-
-        .category_card {
-          --padding: var(--spacing-xl);
-          --fontSize: max(18px, 1vw);
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          padding: var(--padding);
-          gap: var(--padding);
-          font-size: var(--fontSize);
-          text-align: center;
-          border-radius: var(--corners-xxl);
-          transition: all 0.5s var(--ease);
-
-          .card_avatar {
-            --size: 180px;
-            height: var(--size);
-            width: var(--size);
-            border-radius: var(--corners-round);
-            overflow: hidden;
-
-            img {
-              max-width: 100%;
-              max-height: 100%;
-              object-fit: cover;
-              transition: transform 0.5s var(--ease);
-            }
-          }
-          .card_title {
-          }
-        }
-        // Category Card States
-        &:is(:hover, :focus) {
-          .category_card {
-            background-color: white;
-            box-shadow: var(--shadow-xl);
-          }
-        }
-        &:not(:hover, :focus) {
-          .card_avatar {
-            img {
-              transform: scale(1.5);
-            }
-          }
-        }
-      }
+    > * {
+      scroll-snap-align: center;
     }
 
-    // Properties Gallery
-    .horizontal-media-scroller {
-      --maxSize: max(fit-content, 25%);
-      --size: minmax(var(--maxSize), 1fr);
-      gap: unset;
-      flex-grow: 1;
-      scroll-snap-type: x mandatory;
-      scroll-padding-inline-start: unset;
-      border-radius: var(--corners-xxl);
-      background: var(--lightColor);
-      flex-grow: 1;
+    .grid_image {
+      border-radius: var(--corners);
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      display: flex;
 
-      > * {
-        scroll-snap-align: center;
+      picture {
+        display: flex;
+        flex-direction: column;
+        img {
+          flex-grow: 1;
+          object-fit: cover;
+          max-width: 100%;
+        }
       }
     }
   }
