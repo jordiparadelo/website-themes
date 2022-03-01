@@ -23,9 +23,9 @@
     margin: 0 auto;
 
     .header_title {
-      --fontSize: max(5vw, 40px);
+      --fontSize: max(40px, 4vw);
       font-size: var(--fontSize);
-      max-width: 12ch;
+      max-width: 15ch;
       display: flex;
       flex-direction: column;
 

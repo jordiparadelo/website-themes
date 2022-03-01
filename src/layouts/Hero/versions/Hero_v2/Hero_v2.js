@@ -1,77 +1,29 @@
 import React from "react";
+import { Searcher } from "../../../../components";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Hero_v2.scss";
 
 const Hero_v2 = () => {
-  const { data, content } = useDataContext();
-
-  // Methods
-  function handleHoverIn({ currentTarget }) {
-    const categoyId = currentTarget.dataset.categoryId
-    const imageSelected = document.querySelector(`[data-image-id = "${categoyId}"]`)
-
-    imageSelected.dataset.state = 'visible'
-  }
-  function handleHoverOut() {
-    const allImages = [...document.querySelectorAll('.grid_image')]
-    allImages.forEach(image => { delete image.dataset.state })
-  }
-
-  // CaegoriesList Compoenent
-  const CaegoriesList = () => (
-    <div className="category-list">
-      <menu className="category_menu">
-        {data.map(({ title, link }, index) => (
-          <a
-            key={title.split(" ").join("-") + "_link_" + index}
-            className="category_item"
-            href={link}
-            aria-label={`Go to ${title} category`}
-            data-category-id={title}
-            onMouseEnter={handleHoverIn}
-            onFocusCapture={handleHoverIn}
-            onMouseLeave={handleHoverOut}
-          >
-            {title}
-          </a>
-        ))}
-      </menu>
-      <ImageGrid />
-    </div>
-  );
-
-  // ImageGrid Compoenent
-  const ImageGrid = () => (
-    <div className="category_images-grid">
-      {data.map(({ image, title }, index) => (
-        <figure
-          key={title.split(" ").join("-") + "_image_" + index}
-          className="grid_image"
-          data-image-id={title}
-        >
-          <picture>
-            <img
-              src={image}
-              alt={title}
-              width="300px"
-              height="300px"
-              lazy="true"
-            />
-          </picture>
-        </figure>
-      ))}
-    </div>
-  );
+  const { content } = useDataContext();
 
   return (
     <>
+      <picture className="cover-image">
+        <img
+          src={content.image.src}
+          alt={content.image.alt}
+          width="300px"
+          height="300px"
+        />
+      </picture>
       <header className="header">
         <div className="header_title">
-          <h2>{content.tag}</h2>
+          <span>{content.tag}</span>
+          <h1><span>{content.title[0]}</span>{content.title[1]}</h1>
         </div>
+        <Searcher />
       </header>
-      <CaegoriesList />
     </>
   );
 };

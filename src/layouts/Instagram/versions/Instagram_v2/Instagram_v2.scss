@@ -18,7 +18,7 @@
     padding: var(--padding);
 
     .header_title {
-      --fontSize: max(5vw, 40px);
+      --fontSize: max(40px, 4vw);
       font-size: var(--fontSize);
       display: flex;
       flex-direction: column;
