@@ -32,8 +32,8 @@ const Navbar_v1 = () => {
     <menu
       className="nav-menu"
       ref={navMenuRef}
-      onClick={() => setMenuOpen(!menuOpen)}
-      // onClick={handleClick}
+      // onClick={() => setMenuOpen(!menuOpen)}
+      onClick={() => handleClick()}
       data-open={menuOpen}
     >
       <button className="hamburger-menu">| | |</button>

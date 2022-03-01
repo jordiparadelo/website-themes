@@ -1,9 +1,9 @@
 import React from "react";
 import { useDataContext } from "../../DataContext";
 // // Styles
-// import "./Categories_v2.scss";
+// import "./Hero_v2.scss";
 
-const Categories_v2 = () => {
+const Hero_v2 = () => {
   const { data, content } = useDataContext();
 
   // Methods
@@ -76,4 +76,4 @@ const Categories_v2 = () => {
   );
 };
 
-export default Categories_v2;
+export default Hero_v2;

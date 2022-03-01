@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useDataContext } from "../../DataContext";
 // // Styles
-// import "./Categories_v1.scss";
+// import "./Newsletter_v1.scss";
 
-const Categories_v1 = () => {
+const Newsletter_v1 = () => {
   const { form, content } = useDataContext();
   const inputRef = useRef(null);
 
@@ -74,4 +74,4 @@ const Categories_v1 = () => {
   );
 };
 
-export default Categories_v1;
+export default Newsletter_v1;
