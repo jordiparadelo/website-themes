@@ -1,77 +1,62 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Categories_v2.scss";
 
 const Categories_v2 = () => {
-  const { data, content } = useDataContext();
+  const { content } = useDataContext();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navMenuRef = useRef(null);
+  const navLinksRef = useRef(null);
 
   // Methods
-  function handleHoverIn({ currentTarget }) {
-    const categoyId = currentTarget.dataset.categoryId
-    const imageSelected = document.querySelector(`[data-image-id = "${categoyId}"]`)
-
-    imageSelected.dataset.state = 'visible'
+  function handleClick() {
+    const activeState = navMenuRef.current.dataset.open;
+    const STATE_REDUCER = {
+      true: false,
+      false: true,
+    };
+    navMenuRef.current.dataset.open = STATE_REDUCER[activeState];
+    navLinksRef.current.hidden = !STATE_REDUCER[activeState];
+    setMenuOpen(!menuOpen);
   }
-  function handleHoverOut() {
-    const allImages = [...document.querySelectorAll('.grid_image')]
-    allImages.forEach(image => { delete image.dataset.state })
-  }
 
-  // CaegoriesList Compoenent
-  const CaegoriesList = () => (
-    <div className="category-list">
-      <menu className="category_menu">
-        {data.map(({ title, link }, index) => (
+  // Logo
+  const Logo = () => (
+    <a className="logo" href="/">
+      {content.logo}
+    </a>
+  );
+  // Links Compoenent
+  const Links = () => (
+    <menu
+      className="nav-menu"
+      ref={navMenuRef}
+      // onClick={() => setMenuOpen(!menuOpen)}
+      onClick={() => handleClick()}
+      data-open={menuOpen}
+    >
+      <button className="hamburger-menu">| | |</button>
+      <div className="menu_links" hidden ref={navLinksRef}>
+        {content.links.navigation.map(({ slug, link }, index) => (
           <a
-            key={title.split(" ").join("-") + "_link_" + index}
-            className="category_item"
+            key={slug}
+            className="link_item"
             href={link}
-            aria-label={`Go to ${title} category`}
-            data-category-id={title}
-            onMouseEnter={handleHoverIn}
-            onFocusCapture={handleHoverIn}
-            onMouseLeave={handleHoverOut}
+            aria-label={`Go to ${slug} category`}
+            tabIndex={menuOpen ? "0" : "-1"}
           >
-            {title}
+            <span>{slug}</span>
           </a>
         ))}
-      </menu>
-      <ImageGrid />
-    </div>
-  );
-
-  // ImageGrid Compoenent
-  const ImageGrid = () => (
-    <div className="category_images-grid">
-      {data.map(({ image, title }, index) => (
-        <figure
-          key={title.split(" ").join("-") + "_image_" + index}
-          className="grid_image"
-          data-image-id={title}
-        >
-          <picture>
-            <img
-              src={image}
-              alt={title}
-              width="300px"
-              height="300px"
-              lazy="true"
-            />
-          </picture>
-        </figure>
-      ))}
-    </div>
+      </div>
+    </menu>
   );
 
   return (
     <>
-      <header className="header">
-        <div className="header_title">
-          <h2>{content.tag}</h2>
-        </div>
-      </header>
-      <CaegoriesList />
+      <Logo />
+      <Links />
     </>
   );
 };

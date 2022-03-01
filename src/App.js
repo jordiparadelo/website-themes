@@ -20,7 +20,7 @@ import {
 const App = () => {
   return (
     <>
-      <Navbar version={1} />
+      <Navbar version={3} />
       <main>
         <Hero version={3} />
         <Welcome version={3} />
