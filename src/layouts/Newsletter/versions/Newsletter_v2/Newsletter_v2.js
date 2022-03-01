@@ -1,77 +1,75 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Newsletter_v2.scss";
 
 const Newsletter_v2 = () => {
-  const { data, content } = useDataContext();
+  const { form, content } = useDataContext();
+  const inputRef = useRef(null);
 
   // Methods
-  function handleHoverIn({ currentTarget }) {
-    const categoyId = currentTarget.dataset.categoryId
-    const imageSelected = document.querySelector(`[data-image-id = "${categoyId}"]`)
-
-    imageSelected.dataset.state = 'visible'
+  function handleFocus({ type, currentTarget }) {
+    const hasValue = currentTarget.value ? true : false;
+    const FOCUS_TYPE = {
+      focus: true,
+      blur: false,
+    };
+    console.log({ hasValue, type: FOCUS_TYPE[type] });
+    hasValue
+      ? (inputRef.current.dataset.focused = "true")
+      : (inputRef.current.dataset.focused = `${FOCUS_TYPE[type]}`);
   }
-  function handleHoverOut() {
-    const allImages = [...document.querySelectorAll('.grid_image')]
-    allImages.forEach(image => { delete image.dataset.state })
-  }
 
-  // CaegoriesList Compoenent
-  const CaegoriesList = () => (
-    <div className="category-list">
-      <menu className="category_menu">
-        {data.map(({ title, link }, index) => (
-          <a
-            key={title.split(" ").join("-") + "_link_" + index}
-            className="category_item"
-            href={link}
-            aria-label={`Go to ${title} category`}
-            data-category-id={title}
-            onMouseEnter={handleHoverIn}
-            onFocusCapture={handleHoverIn}
-            onMouseLeave={handleHoverOut}
-          >
-            {title}
-          </a>
-        ))}
-      </menu>
-      <ImageGrid />
-    </div>
-  );
-
-  // ImageGrid Compoenent
-  const ImageGrid = () => (
-    <div className="category_images-grid">
-      {data.map(({ image, title }, index) => (
-        <figure
-          key={title.split(" ").join("-") + "_image_" + index}
-          className="grid_image"
-          data-image-id={title}
+  // Form
+  const Form = () => (
+    <form className="contact-form">
+      {form.inputs.map(({ label, type }) => (
+        <label
+          key={label}
+          className="input-group"
+          data-input="email"
+          ref={inputRef}
+        // data-focused={inputFocused}
         >
-          <picture>
-            <img
-              src={image}
-              alt={title}
-              width="300px"
-              height="300px"
-              lazy="true"
-            />
-          </picture>
-        </figure>
+          {label}
+          <input
+            type={type}
+            label={label}
+            placeholder="jhondoe@gmail.com"
+            onFocus={handleFocus}
+            onBlur={handleFocus}
+            required
+          />
+        </label>
       ))}
-    </div>
+      <div className="form_conditions">
+        {Object.values(form.formConditions).map(
+          (condition) => condition.available && condition.render()
+        )}
+      </div>
+      <div className="input-group" data-input="submit">
+        <button type="submit">Get more info</button>
+      </div>
+    </form>
   );
 
   return (
     <>
       <header className="header">
         <div className="header_title">
-          <h2>{content.tag}</h2>
+          <span>{content.tag}</span>
+          <h2>{content.title}</h2>
         </div>
+        <Form />
       </header>
-      <CaegoriesList />
+      <picture className="cover-image">
+        <img
+          src={content.image.src}
+          alt={content.image.alt}
+          width="300px"
+          height="300px"
+        />
+      </picture>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Categories_v1.scss";
@@ -55,7 +55,7 @@ const Categories_v1 = () => {
 
   return (
     <>
-      <picture className="image">
+      <picture className="cover-image">
         <img
           src={content.image.src}
           alt={content.image.alt}
