@@ -1,6 +1,6 @@
 #Hero[data-version="1"] {
   --padding: max(var(--spacing-lg), 5vw);
-  --maxWidth: max(800px, calc(100% - calc(var(--spacing-xl) * 2)));
+  --maxWidth: max(800px, calc(100% - calc(var(--spacing-lg) * 2)));
   --navSize: 80px;
   --height: calc(100vh - var(--navSize));
   color: var(--lightColor);

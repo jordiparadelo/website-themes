@@ -1,6 +1,6 @@
 #Newsletter[data-version="3"] {
   --padding: max(var(--spacing-lg), 5vw);
-  --maxWidth: max(800px, calc(100% - calc(var(--spacing-xl) * 2)));
+  --maxWidth: max(800px, calc(100% - calc(var(--spacing-lg) * 2)));
   color: var(--lightColor);
   background-color: var(--fontColor);
   margin: var(--spacing-xl) auto;

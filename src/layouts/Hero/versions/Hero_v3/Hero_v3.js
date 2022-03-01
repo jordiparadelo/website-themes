@@ -1,53 +1,30 @@
 import React from "react";
-import { HorizontalMediaScroller } from "../../../../components";
+import { Searcher } from "../../../../components";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Hero_v3.scss";
 
 const Hero_v3 = () => {
-  const { data, content } = useDataContext();
-
-  // CaegoriesList Compoenent
-  const CaegoriesList = () => (
-    <div className="category-list">
-      <menu className="category_menu">
-        <HorizontalMediaScroller>
-          {data.map(({ image, title, link }, index) => (
-            <a
-              key={title.split(" ").join("-") + "_link_" + index}
-              className="category_item"
-              href={link}
-              aria-label={`Go to ${title} category`}
-            >
-              <figure className="category_card">
-                <picture className="card_avatar">
-                  <img
-                    src={image}
-                    alt={title}
-                    width="300px"
-                    height="300px"
-                    lazy="true"
-                  />
-                </picture>
-                <figcaption className="card_title">{title}</figcaption>
-              </figure>
-            </a>
-          ))}
-        </HorizontalMediaScroller>
-      </menu>
-    </div>
-  );
+  const { content } = useDataContext();
 
   return (
-    <div className="wrapper">
+    <>
+      <picture className="cover-image">
+        <img
+          src={content.image.src}
+          alt={content.image.alt}
+          width="300px"
+          height="300px"
+        />
+      </picture>
       <header className="header">
         <div className="header_title">
           <span>{content.tag}</span>
-          <h2>{content.title}</h2>
+          <h1><span>{content.title[0]}</span>{content.title[1]}</h1>
         </div>
+        <Searcher />
       </header>
-      <CaegoriesList />
-    </div>
+    </>
   );
 };
 
