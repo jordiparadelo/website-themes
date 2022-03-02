@@ -33,10 +33,9 @@ const Categories_v3 = () => {
       className="nav-menu"
       ref={navMenuRef}
       // onClick={() => setMenuOpen(!menuOpen)}
-      onClick={() => handleClick()}
       data-open={menuOpen}
     >
-      <button className="hamburger-menu">| | |</button>
+      <button className="hamburger-menu" onClick={() => handleClick()}></button>
       <div className="menu_links" hidden ref={navLinksRef}>
         {content.links.navigation.map(({ slug, link }, index) => (
           <a
