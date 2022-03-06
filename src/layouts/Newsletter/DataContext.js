@@ -21,11 +21,11 @@ const form = {
     formConditions: {
         privacy: {
             available: true,
-            render: () => (<label className="input-group"> <input type='checkbox' required /> I have read and accepted the privacy policy and general conditions</label>)
+            render: ({ key }) => (<label className="input-group" key={key}> <input type='checkbox' required /> I have read and accepted the privacy policy and general conditions</label>)
         },
         comercialInfo: {
             available: true,
-            render: () => (<label className="input-group"> <input type='checkbox' /> Acceptance to receive commercial information</label>)
+            render: ({ key }) => (<label className="input-group" key={key}> <input type='checkbox' /> Acceptance to receive commercial information</label>)
         },
     }
 };
