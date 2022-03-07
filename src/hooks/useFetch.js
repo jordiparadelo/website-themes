@@ -82,9 +82,9 @@ export const usePropertiesFetch = (hitsPerPage) => {
             .catch((error) => setError(error))
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
+    // useEffect(() => {
+    //     getData()
+    // }, [])
 
     // Check if turns data or error and handle dummy data
     useEffect(() => {
