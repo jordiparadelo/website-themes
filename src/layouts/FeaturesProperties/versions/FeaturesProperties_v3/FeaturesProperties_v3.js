@@ -10,17 +10,10 @@ const FeaturesProperties_v3 = () => {
   const PropertiesList = ({ properties, loading }) => (
     <HorizontalMediaScroller>
       {properties.map(
-        ({
-          id,
-          coverPhoto: { url: imageSrc },
-          imageAlt,
-          title,
-          price,
-          type,
-        }) => (
+        (property) => (
           <PropertyCard
-            key={id}
-            data={{ imageSrc, imageAlt, title, price, type }}
+            key={property.id}
+            data={property}
           />
         )
       )}

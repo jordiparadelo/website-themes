@@ -81,7 +81,11 @@
       flex-grow: 1;
     }
     .property_content {
+      --padding: var(--spacing);
       flex-grow: 0;
+      padding: var(--padding);
+      background: var(--lightColor);
+      font-size: 24px;
     }
   }
 
