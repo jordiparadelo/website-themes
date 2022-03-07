@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 // Styles
 import "./Welcome.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
 import { DataProvider } from "./DataContext";
+// Animations
+import { initAnimation } from "./animations";
+import useOnScreen from "../../hooks/useOnScreen";
 
 // Default
 export const Default = () => {
@@ -17,10 +20,20 @@ export const Default = () => {
   );
 };
 
+
+
 const Welcome = ({ version }) => {
+  const sectionRef = useRef(null);
+  const onScreen = useOnScreen(sectionRef, "-300px");
+
+  // Component State
+  useEffect(() => {
+    onScreen && initAnimation()
+  }, [onScreen])
+
   return (
     <DataProvider>
-      <section id="Welcome" data-version={version || null}>
+      <section id="Welcome" ref={sectionRef} data-version={version || null}>
         {version
           ? <VersionProvider version={version} />
           : <Default />
