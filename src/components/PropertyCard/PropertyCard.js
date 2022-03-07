@@ -15,7 +15,7 @@ const PropertyCard = ({
       {...attr}
     >
       <picture className="property_image">
-        <img src={coverPhoto.url || ""} alt={imageAlt || ""} lazy="true" />
+        <img width="150" height="150" src={coverPhoto.url || ""} alt={imageAlt || ""} lazy="true" />
       </picture>
       <figcaption className="property_content">
         <header className="content_title">

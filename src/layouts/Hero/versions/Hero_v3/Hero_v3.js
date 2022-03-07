@@ -13,8 +13,8 @@ const Hero_v3 = () => {
         <img
           src={content.image.src}
           alt={content.image.alt}
-          width="300px"
-          height="300px"
+          width="1440px"
+          height="1024px"
         />
       </picture>
       <header className="header">

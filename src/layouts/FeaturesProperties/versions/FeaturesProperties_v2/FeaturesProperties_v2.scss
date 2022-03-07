@@ -75,8 +75,6 @@
     @media screen and (max-width: 400px) {
       --size: 100%;
       --padding: var(--spacing);
-      padding-left: var(--spacing);
-      padding-right: var(--spacing);
       gap: var(--spacing-lg);
       scroll-padding-inline-start: unset;
       > * {
@@ -91,13 +89,15 @@
     }
     .property_content {
       --padding: var(--spacing);
+      --fontSize: clamp(18px, 5vw, 24px);
+
       display: flex;
       flex-direction: column;
       flex-grow: 0;
       padding: var(--padding);
       gap: var(--padding);
       background: var(--lightColor);
-      font-size: 24px;
+      font-size: var(--fontSize);
 
       .content_title {
         .location {
