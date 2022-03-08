@@ -20,7 +20,7 @@ const PropertyCard = ({
       <figcaption className="property_content">
         <header className="content_title">
           <span className="location">{location || "Type of Accomodation"}</span>
-          <h4 className="title">{title || "Name of Accomodation"}</h4>
+          <h3 className="title">{title || "Name of Accomodation"}</h3>
         </header>
         <div className="content_details">
           <div className="details_price">
