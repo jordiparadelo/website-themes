@@ -13,9 +13,7 @@ function titleAnimation() {
         duration: 1000,
         delay: anime.stagger(100),
         easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-        complete: function (anim) {
-            console.log({ completed: anim.completed, targets: anim.targets });
-        }
+
     })
     // console.log({ headerTitle })
 }

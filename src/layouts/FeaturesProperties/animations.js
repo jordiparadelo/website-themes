@@ -1,60 +1,68 @@
 import anime from "animejs";
+import ScrollMagic from "scrollmagic";
+import { controller } from "../../animations/scrollAnimation"
+import { ScrollMagicPluginIndicator } from "scrollmagic-plugins";
+// Register Plugin
+ScrollMagicPluginIndicator(ScrollMagic);
 
 const $Section = '#FeaturesProperties'
 
 // Text Animaitons
 function titleAnimation() {
-    const headerTitle = document.querySelector('.header_title');
+    const headerTitle = document.querySelector(`${$Section} .header`);
     const headerChilds = [...headerTitle.children]
 
     anime({
-        targets: `${$Section} .header *`,
+        targets: headerChilds,
         translateY: ["50%", "0%"],
         opacity: [0, 1],
-        duration: 1000,
-        delay: anime.stagger(100),
+        duration: 1500,
+        delay: anime.stagger(500),
         easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-        complete: function (anim) {
-            console.log({ completed: anim.completed, targets: anim.targets });
-        },
     })
-    console.log({ headerTitle, headerChilds })
 }
+
 // Media Animation
 function mediaAnimation() {
-    const media = document.querySelector('.horizontal-media-scroller');
-    // const headerChilds = [...headerTitle.children]
+    const media = document.querySelector(`${$Section} .horizontal-media-scroller`);
 
     anime({
         targets: `${$Section} .horizontal-media-scroller`,
         translateX: ["100%", "0%"],
         opacity: [0, 1],
-        duration: 1000,
+        duration: 1500,
         delay: anime.stagger(100),
         easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-        complete: function (anim) {
-            console.log({ completed: anim.completed, targets: anim.targets });
-        }
     })
 }
 function allMediaAnimation() {
-    const media = document.querySelector('.horizontal-media-scroller');
-    // const headerChilds = [...headerTitle.children]
+    const media = document.querySelector(`${$Section} .horizontal-media-scroller`);
+    const mediaChilds = [...media.children]
 
     anime({
-        targets: `${$Section} .horizontal-media-scroller *`,
-        translateY: ["100%", "0%"],
-        opacity: [0, 1],
-        duration: 1000,
-        delay: anime.stagger(100),
+        targets: mediaChilds,
+        translateX: ["100%", "0%"],
+        duration: 1500,
+        delay: anime.stagger(250),
         easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-        complete: function (anim) {
-            console.log({ completed: anim.completed, targets: anim.targets });
-        }
     })
 }
 // Init Animation
 export function initAnimation() {
-    titleAnimation()
-    mediaAnimation()
+    // Build a scene 
+    new ScrollMagic.Scene({
+        triggerElement: `${$Section}`,
+        duration: '100%',
+        triggerHook: 0.2,
+        reverse: false
+    })
+        .addTo(controller)
+        .addIndicators({
+            name: `${$Section} Indicator`
+        })
+        .on('enter', () => {
+            titleAnimation()
+            mediaAnimation()
+            allMediaAnimation()
+        })
 }

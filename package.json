@@ -13,6 +13,8 @@
     "react-scripts": "5.0.0",
     "react-transition-group": "^4.4.2",
     "sass": "1.49.8",
+    "scrollmagic": "^2.0.8",
+    "scrollmagic-plugins": "^1.0.8",
     "web-vitals": "2.1.4"
   },
   "scripts": {

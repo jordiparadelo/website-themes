@@ -7,7 +7,6 @@ import { VersionProvider } from "./versions/VersionContext.js";
 import { DataProvider } from "./DataContext";
 // Animations
 import { initAnimation } from "./animations";
-import useOnScreen from "../../hooks/useOnScreen";
 
 // Default
 export const Default = () => {
@@ -24,12 +23,11 @@ export const Default = () => {
 
 const Welcome = ({ version }) => {
   const sectionRef = useRef(null);
-  const onScreen = useOnScreen(sectionRef, "-300px");
 
-  // Component State
+  // Animation Init
   useEffect(() => {
-    onScreen && initAnimation()
-  }, [onScreen])
+    initAnimation()
+  }, [])
 
   return (
     <DataProvider>
