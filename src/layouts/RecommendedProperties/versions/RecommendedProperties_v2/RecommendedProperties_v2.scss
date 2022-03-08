@@ -46,13 +46,85 @@
     }
   }
 
-  // Property Card
+  // Propertie card
   .property-card {
     .property_image {
       flex-grow: 1;
     }
     .property_content {
+      --padding: var(--spacing);
+      --fontSize: clamp(18px, 5vw, 24px);
+
+      display: flex;
+      flex-direction: column;
       flex-grow: 0;
+      padding: var(--padding);
+      gap: var(--padding);
+      background: var(--lightColor);
+      font-size: var(--fontSize);
+
+      .content_title {
+        .location {
+          font-size: max(14px, 0.8em);
+        }
+      }
+
+      .content_details {
+        --border: 1px solid var(--grayColor);
+        display: flex;
+        flex-direction: row-reverse;
+        flex-grow: 1;
+        padding: var(--spacing) 0;
+        border-top: var(--border);
+        border-bottom: var(--border);
+        align-items: center;
+
+        > * {
+          flex-grow: 1;
+        }
+
+        // Lateral Border
+        > * + * {
+          border-right: var(--border);
+        }
+
+        .details_price {
+          display: flex;
+          justify-content: center;
+          font-size: 1.2em;
+          font-weight: bold;
+          .tag {
+            display: none;
+          }
+        }
+        .details_accommodation {
+          display: flex;
+          font-size: 0.8em;
+          align-self: stretch;
+          align-items: center;
+
+          > * {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row-reverse;
+            gap: var(--spacing-xs);
+            justify-content: center;
+            font-weight: bold;
+            align-self: inherit;
+            align-items: inherit;
+          }
+
+          // Lateral Border
+          > * + * {
+            border-left: var(--border);
+          }
+
+          .tag {
+            color: var(--grayColor);
+            font-weight: lighter;
+          }
+        }
+      }
     }
   }
 }
