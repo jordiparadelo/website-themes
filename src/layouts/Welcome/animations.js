@@ -20,6 +20,13 @@ function titleAnimation() {
     })
     // console.log({ headerTitle, headerChilds })
 }
+
+const imageAnimation = anime({
+    targets: `${$Section} img`,
+    scale: 2,
+    duration: 1000,
+    easing: 'linear',
+})
 // Init Animation
 export function initAnimation() {
     // Build a scene 
@@ -34,4 +41,19 @@ export function initAnimation() {
             name: `${$Section} Indicator`
         })
         .on('enter', () => titleAnimation().restart)
+
+    new ScrollMagic.Scene({
+        triggerElement: `${$Section}`,
+        duration: '100%',
+        triggerHook: 0.2,
+        reverse: false
+    })
+        .addTo(controller)
+        .addIndicators({
+            name: `${$Section} Indicator`
+        })
+        .on('progress', (progress) => {
+            console.log(progress)
+            imageAnimation.seek(progress * 1000)
+        })
 }
