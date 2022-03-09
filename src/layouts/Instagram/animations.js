@@ -5,7 +5,7 @@ import { ScrollMagicPluginIndicator } from "scrollmagic-plugins";
 // Register Plugin
 ScrollMagicPluginIndicator(ScrollMagic);
 
-const $Section = '#Categories'
+const $Section = '#Instagram'
 
 // Animation Timeline
 const tl = anime.timeline({
@@ -15,20 +15,24 @@ const tl = anime.timeline({
 
 // Idle Animation
 function idleAnimation() {
-    const headerChilds = document.querySelectorAll(`${$Section} .header_title *`);
-    const categoriesGrid = document.querySelector(`${$Section} .header + *`).children;
+    const headerChilds = document.querySelector(`${$Section} .header *`);
+    const instagramGrid = document.querySelectorAll(`${$Section} .grid_image`);
+    const gridImages = document.querySelectorAll(`${$Section} .grid_image img`);
 
-    anime.set(categoriesGrid, {
-        opacity: 0
+    anime.set(gridImages, {
+        scale: '1.5'
     });
     anime.set(headerChilds, {
+        opacity: 0,
+    });
+    anime.set(instagramGrid, {
         opacity: 0
     });
 
 }
 // Text Animaitons
 function titleAnimation() {
-    const headerTitle = document.querySelector(`${$Section} .header_title`);
+    const headerTitle = document.querySelector(`${$Section} .header`);
     const headerChilds = [...headerTitle.children]
 
     return {
@@ -38,28 +42,16 @@ function titleAnimation() {
         delay: anime.stagger(200),
     }
 }
-// Categoy Images Animaiton
-function categoriesAnimation() {
-    const categoriesGrid = document.querySelector(`${$Section} .header + *`);
-    const categoriesChilds = [...categoriesGrid.children]
+// Property List Animaiton
+function imagesAnimation() {
+    const instagramGrid = document.querySelector(`${$Section} .images-grid`);
+    const gridChilds = [...instagramGrid.children]
 
     return {
-        targets: categoriesChilds,
+        targets: gridChilds,
         translateY: ["20%", "0%"],
         opacity: [0, 1],
         delay: anime.stagger(200),
-    }
-}
-// Categoy List Animaiton
-function listAnimation() {
-    const categoryListItems = document.querySelectorAll(`${$Section} .category-list *`);
-
-    if (!categoryListItems) return
-
-    return {
-        targets: categoryListItems,
-        opacity: [0, 1],
-        delay: anime.stagger(50),
     }
 }
 
@@ -67,9 +59,9 @@ function listAnimation() {
 export function initAnimation() {
     // Grid Scroll on Y axis
     const scrollOnY = anime({
-        targets: `${$Section} .grid_image`,
+        targets: `${$Section} .grid_image:nth-child(odd)`,
         easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-        translateY: '20%',
+        translateY: ['10%', '-5%'],
         position: 'relative',
         duration: 1000,
         autoplay: false,
@@ -82,17 +74,16 @@ export function initAnimation() {
     // Build a Animation scene 
     new ScrollMagic.Scene({
         triggerElement: `${$Section}`,
-        duration: '1000%',
+        duration: '100%',
         triggerHook: 0.5,
         reverse: false
     })
         .addTo(controller)
-        // .addIndicators({ name: `${$Section} Indicator` })
+        // .addIndicators({name: `${$Section} Indicator`})
         .on('enter', () => {
             tl
-                .add(titleAnimation())
-                .add(listAnimation(), '-=500')
-                .add(categoriesAnimation(), '-=1500')
+                .add(imagesAnimation())
+                .add(titleAnimation(), '-=600')
         })
 
     // Scroll Animation scene 

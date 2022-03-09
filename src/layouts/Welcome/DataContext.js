@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 
-
 // Data
 const data = {
     tag: "Welcome",

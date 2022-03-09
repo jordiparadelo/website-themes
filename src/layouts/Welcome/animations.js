@@ -3,7 +3,6 @@ import ScrollMagic from "scrollmagic";
 import { controller } from "../../animations/scrollAnimation"
 
 const $Section = '#Welcome'
-// export const controller = new ScrollMagic.Controller()
 
 // Animation Timeline
 const tl = anime.timeline({
@@ -16,9 +15,6 @@ function idleAnimation() {
     const headerTitle = document.querySelector(`${$Section} .header_title`);
     const titleChilds = [...headerTitle.children]
     const headerText = document.querySelector(`${$Section} .header_description`);
-    // const propertiesChilds = [...propertiesList.children]
-
-    console.log(headerTitle, titleChilds)
 
     anime.set([titleChilds, headerText], {
         opacity: 0
@@ -48,20 +44,23 @@ function textAnimation() {
         delay: anime.stagger(200),
     }
 }
-// Image Scroll on Y axis
-const scrollOnY = anime({
-    targets: `${$Section} img`,
-    scale: "1.5",
-    easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-    duration: 1000,
-    // autoplay: false
-})
+
 
 // Init Animation
 export function initAnimation() {
+    // Image Scroll on Y axis
+    const scrollOnY = anime({
+        targets: `${$Section} .cover-image img`,
+        easing: `cubicBezier(0.22, 1, 0.36, 1)`,
+        scale: 1.5,
+        duration: 1000,
+        autoplay: false,
+    })
+
     // Init Animation State
     idleAnimation()
-    // Build a Animation scene 
+
+    // Animation scene 
     new ScrollMagic.Scene({
         triggerElement: `${$Section}`,
         duration: '100%',
@@ -69,26 +68,19 @@ export function initAnimation() {
         reverse: false
     })
         .addTo(controller)
-        .addIndicators({
-            name: `${$Section} Indicator`
-        })
+        // .addIndicators({ name: `${$Section} Indicator`})
         .on('enter', () => {
             tl
                 .add(titleAnimation())
                 .add(textAnimation(), '-=600')
         })
 
-    const scrollScene = new ScrollMagic.Scene({
+    // Scroll Animation scene 
+    new ScrollMagic.Scene({
         triggerElement: `${$Section}`,
         duration: '100%',
-        triggerHook: 0.5,
     })
+        // .addIndicators({name: `${$Section} Scroll Indicator`})
         .addTo(controller)
-        .addIndicators({
-            name: `${$Section} Scroll Indicator`
-        })
-        .on("progress", ({ progress }) => {
-            // console.log(scrollOnY, (progress * 100))
-            scrollOnY.seek(progress * 100)
-        })
+        .on("progress", ({ progress }) => scrollOnY.seek(progress * 100))
 }

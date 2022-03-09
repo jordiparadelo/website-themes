@@ -5,7 +5,7 @@ import { ScrollMagicPluginIndicator } from "scrollmagic-plugins";
 // Register Plugin
 ScrollMagicPluginIndicator(ScrollMagic);
 
-const $Section = '#FeaturesProperties'
+const $Section = '#Discover'
 
 // Animation Timeline
 const tl = anime.timeline({
@@ -14,21 +14,22 @@ const tl = anime.timeline({
 })
 
 // Idle Animation
-async function idleAnimation() {
-    const headerChilds = document.querySelectorAll(`${$Section} .header_title *`);
-    let propertiesCards = document.querySelectorAll(`${$Section} .property-card`);
+function idleAnimation() {
+    const headerChilds = document.querySelector(`${$Section} .header *`);
+    const galleryImages = document.querySelectorAll(`${$Section} .image-gallery`);
+
 
     anime.set(headerChilds, {
         opacity: 0
     });
-
-    await anime.set(propertiesCards, { opacity: 0 });
+    anime.set(galleryImages, {
+        opacity: 0
+    });
 
 }
-
 // Text Animaitons
 function titleAnimation() {
-    const headerTitle = document.querySelector(`${$Section} .header_title`);
+    const headerTitle = document.querySelector(`${$Section} .header`);
     const headerChilds = [...headerTitle.children]
 
     return {
@@ -39,21 +40,21 @@ function titleAnimation() {
     }
 }
 // Property List Animaiton
-function propertiesAnimation() {
-    const propertiesCards = document.querySelectorAll(`${$Section} .property-card`);
+function imagesAnimation() {
+    const galleryImages = document.querySelectorAll(`${$Section} .image-gallery`);
 
     return {
-        targets: propertiesCards,
-        translateX: ["20%", "0%"],
+        targets: galleryImages,
+        translateY: ["20%", "0%"],
         opacity: [0, 1],
         delay: anime.stagger(200),
     }
 }
 
 // Init Animation
-export async function initAnimation() {
+export function initAnimation() {
     // Init Animation State
-    await idleAnimation()
+    idleAnimation()
     // Build a Animation scene 
     new ScrollMagic.Scene({
         triggerElement: `${$Section}`,
@@ -66,6 +67,6 @@ export async function initAnimation() {
         .on('enter', () => {
             tl
                 .add(titleAnimation())
-                .add(propertiesAnimation(), '-=600')
+                .add(imagesAnimation(), '-=600')
         })
 }

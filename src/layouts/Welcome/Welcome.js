@@ -4,9 +4,10 @@ import "./Welcome.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
-import { DataProvider } from "./DataContext";
+import { DataProvider, useDataContext } from "./DataContext";
 // Animations
 import { initAnimation } from "./animations";
+
 
 // Default
 export const Default = () => {

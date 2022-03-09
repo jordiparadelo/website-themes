@@ -60,9 +60,7 @@ export function initAnimation() {
         reverse: false
     })
         .addTo(controller)
-        .addIndicators({
-            name: `${$Section} Indicator`
-        })
+        // .addIndicators({name: `${$Section} Indicator`})
         .on('enter', () => {
             tl
                 .add(titleAnimation())
