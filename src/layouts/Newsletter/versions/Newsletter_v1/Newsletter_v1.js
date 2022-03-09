@@ -14,7 +14,7 @@ const Newsletter_v1 = () => {
       focus: true,
       blur: false,
     };
-    console.log({ hasValue, type: FOCUS_TYPE[type] });
+    // console.log({ hasValue, type: FOCUS_TYPE[type] });
     hasValue
       ? (inputRef.current.dataset.focused = "true")
       : (inputRef.current.dataset.focused = `${FOCUS_TYPE[type]}`);
@@ -44,7 +44,7 @@ const Newsletter_v1 = () => {
       ))}
       <div className="form_conditions">
         {Object.values(form.formConditions).map(
-          (condition) => condition.available && condition.render(condition)
+          (condition) => condition.available && condition.render()
         )}
       </div>
       <div className="input-group" data-input="submit">

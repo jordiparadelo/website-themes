@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 // Styles
 import "./Welcome.scss";
 // Version
@@ -22,8 +22,6 @@ export const Default = () => {
 
 
 const Welcome = ({ version }) => {
-  const sectionRef = useRef(null);
-
   // Animation Init
   useEffect(() => {
     initAnimation()
@@ -31,7 +29,7 @@ const Welcome = ({ version }) => {
 
   return (
     <DataProvider>
-      <section id="Welcome" ref={sectionRef} data-version={version || null}>
+      <section id="Welcome" data-version={version || null}>
         {version
           ? <VersionProvider version={version} />
           : <Default />

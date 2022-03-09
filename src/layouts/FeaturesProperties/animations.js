@@ -7,53 +7,59 @@ ScrollMagicPluginIndicator(ScrollMagic);
 
 const $Section = '#FeaturesProperties'
 
+// Animation Timeline
+const tl = anime.timeline({
+    easing: `cubicBezier(0.22, 1, 0.36, 1)`,
+    duration: 750,
+})
+
+// Idle Animation
+function idleAnimation() {
+    const headerChilds = document.querySelectorAll(`${$Section} .header_title *`);
+    const propertiesList = document.querySelectorAll(`${$Section} .property-card`);
+
+    anime.set(propertiesList, {
+        opacity: 0
+    });
+    anime.set(headerChilds, {
+        opacity: 0
+    });
+
+}
 // Text Animaitons
 function titleAnimation() {
-    const headerTitle = document.querySelector(`${$Section} .header`);
+    const headerTitle = document.querySelector(`${$Section} .header_title`);
     const headerChilds = [...headerTitle.children]
 
-    anime({
+    return {
         targets: headerChilds,
-        translateY: ["50%", "0%"],
+        translateY: ["20%", "0%"],
         opacity: [0, 1],
-        duration: 1500,
-        delay: anime.stagger(500),
-        easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-    })
+        delay: anime.stagger(200),
+    }
 }
+// Property List Animaiton
+function propertiesAnimation() {
+    const propertiesList = document.querySelector(`${$Section} .horizontal-media-scroller`);
+    const propertiesChilds = [...propertiesList.children]
 
-// Media Animation
-function mediaAnimation() {
-    const media = document.querySelector(`${$Section} .horizontal-media-scroller`);
-
-    anime({
-        targets: `${$Section} .horizontal-media-scroller`,
-        translateX: ["100%", "0%"],
+    return {
+        targets: propertiesChilds,
+        translateX: ["20%", "0%"],
         opacity: [0, 1],
-        duration: 1500,
-        delay: anime.stagger(100),
-        easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-    })
+        delay: anime.stagger(200),
+    }
 }
-function allMediaAnimation() {
-    const media = document.querySelector(`${$Section} .horizontal-media-scroller`);
-    const mediaChilds = [...media.children]
 
-    anime({
-        targets: mediaChilds,
-        translateX: ["100%", "0%"],
-        duration: 1500,
-        delay: anime.stagger(250),
-        easing: `cubicBezier(0.22, 1, 0.36, 1)`,
-    })
-}
 // Init Animation
 export function initAnimation() {
-    // Build a scene 
+    // Init Animation State
+    idleAnimation()
+    // Build a Animation scene 
     new ScrollMagic.Scene({
         triggerElement: `${$Section}`,
         duration: '100%',
-        triggerHook: 0.2,
+        triggerHook: 0.5,
         reverse: false
     })
         .addTo(controller)
@@ -61,8 +67,8 @@ export function initAnimation() {
             name: `${$Section} Indicator`
         })
         .on('enter', () => {
-            titleAnimation()
-            mediaAnimation()
-            allMediaAnimation()
+            tl
+                .add(titleAnimation())
+                .add(propertiesAnimation(), '-=600')
         })
 }
