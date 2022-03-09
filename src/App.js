@@ -20,19 +20,19 @@ import {
 const App = () => {
   return (
     <>
-      <Navbar version={1} />
+      <Navbar version={3} />
       <main>
-        <Hero version={2} />
-        <Welcome version={2} />
-        <FeaturesProperties version={2} />
-        <Discover version={2} />
-        <RecommendedProperties version={2} />
-        <Categories version={1} />
-        <Offers version={2} />
-        <Instagram version={2} />
+        <Hero version={3} />
+        <Welcome version={3} />
+        <FeaturesProperties version={3} />
+        <Discover version={3} />
+        <RecommendedProperties version={3} />
+        <Categories version={3} />
+        <Offers version={3} />
+        <Instagram version={3} />
         <Newsletter version={1} />
       </main>
-      <Footer version={3} />
+      <Footer version={1} />
       {/* <Discounts /> */}
       {/* <Recommendations /> */}
       {/* <Reviews /> */}

@@ -14,19 +14,10 @@ const RecommendedProperties_v1 = () => {
     ) : (
       <HorizontalMediaScroller>
         {data.hits.map(
-          ({
-            id,
-            coverPhoto: { url: imageSrc },
-            imageAlt,
-            title,
-            price,
-            type,
-          }) => (
+          (property) => (
             <PropertyCard
-              key={id}
-              data={{ imageSrc, imageAlt, title, price, type }}
-              id={`reccomendedProperty_${id}`}
-              attr={{ tabIndex: 0 }}
+              key={property.id}
+              data={property}
             />
           )
         )}
@@ -68,21 +59,21 @@ const RecommendedProperties_v1 = () => {
           {loading
             ? "⏲ loading ... "
             : data.hits.map(({ id, title }, index) => {
-                return (
-                  <a
-                    onClick={handleClick}
-                    data-index={index}
-                    className="pagination_link"
-                    key={title + id}
-                    aria-label={`Goto ${title}`}
-                    href={`#reccomendedProperty_${id}`}
-                    disabled={activeIndex !== index}
-                    aria-current={activeIndex === index}
-                  >
-                    <span hidden>Link to {title}</span>
-                  </a>
-                );
-              })}
+              return (
+                <a
+                  onClick={handleClick}
+                  data-index={index}
+                  className="pagination_link"
+                  key={title + id}
+                  aria-label={`Goto ${title}`}
+                  href={`#reccomendedProperty_${id}`}
+                  disabled={activeIndex !== index}
+                  aria-current={activeIndex === index}
+                >
+                  <span hidden>Link to {title}</span>
+                </a>
+              );
+            })}
         </menu>
       </nav>
     );

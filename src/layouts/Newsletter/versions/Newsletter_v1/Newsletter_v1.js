@@ -23,9 +23,9 @@ const Newsletter_v1 = () => {
   // Form
   const Form = () => (
     <form className="contact-form">
-      {form.inputs.map(({ label, type }) => (
+      {form.inputs.map(({ label, type }, index) => (
         <label
-          key={label}
+          key={label + index}
           className="input-group"
           data-input="email"
           ref={inputRef}
@@ -44,7 +44,7 @@ const Newsletter_v1 = () => {
       ))}
       <div className="form_conditions">
         {Object.values(form.formConditions).map(
-          (condition) => condition.available && condition.render()
+          (condition) => condition.available && condition.render(condition)
         )}
       </div>
       <div className="input-group" data-input="submit">

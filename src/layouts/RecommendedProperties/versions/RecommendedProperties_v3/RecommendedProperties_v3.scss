@@ -49,14 +49,85 @@
       }
     }
 
-    // Property Card
+    // Propertie card
     .property-card {
-      border-radius: var(--corners-xxl);
-      overflow: hidden;
+      --borderRadius: var(--corners-lg);
+      display: flex;
+      border-radius: var(--borderRadius);
 
-      &:nth-child(odd) {
-        max-height: 80%;
-        align-self: center;
+      .property_image {
+        flex-grow: 1;
+        border-radius: var(--borderRadius);
+        overflow: hidden;
+      }
+      .property_content {
+        --padding: var(--spacing);
+        --fontSize: clamp(18px, 5vw, 20px);
+        display: flex;
+        flex-direction: column;
+        padding: var(--padding);
+        gap: var(--spacing-xs);
+        font-size: var(--fontSize);
+        flex-grow: unset;
+
+        .content_title {
+          .location {
+            font-size: max(14px, 0.8em);
+          }
+        }
+
+        .content_details {
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: row-reverse;
+          align-items: center;
+          white-space: nowrap;
+
+          > * {
+            flex-grow: 1;
+          }
+
+          // Lateral Border
+          > * + * {
+            border-right: var(--border);
+          }
+
+          .details_price {
+            display: flex;
+            font-weight: bold;
+            justify-content: flex-end;
+            font-size: 1.5em;
+            .tag {
+              display: none;
+            }
+          }
+          .details_accommodation {
+            display: flex;
+            font-size: 0.7em;
+            gap: var(--spacing);
+
+            > * {
+              --size: 24px;
+
+              display: flex;
+              flex-direction: row-reverse;
+              gap: var(--spacing-xs);
+              justify-content: center;
+              align-items: center;
+              font-weight: bold;
+              padding: 0 var(--spacing-xs);
+              min-height: var(--size);
+              background: var(--lightColor);
+              border-radius: var(--corners-round);
+              border: 1px solid var(--grayColor);
+            }
+
+            .tag {
+              color: var(--grayColor);
+              font-weight: lighter;
+            }
+          }
+        }
       }
     }
   }

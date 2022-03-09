@@ -27,6 +27,7 @@ const Navbar_v1 = () => {
       {content.logo}
     </a>
   );
+
   // Links Compoenent
   const Links = () => (
     <menu

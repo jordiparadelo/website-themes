@@ -3,10 +3,52 @@ import axios from "axios";
 
 const defaultData = {
     hits: [
-        { id: '01', coverPhoto: { url: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" }, imageAlt: "Property Case 1", title: "Property Case 1", price: "1000", type: "Sale" },
-        { id: '02', coverPhoto: { url: "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" }, imageAlt: "Property Case 2", title: "Property Case 2", price: "2000", type: "Sale" },
-        { id: '03', coverPhoto: { url: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" }, imageAlt: "Property Case 3", title: "Property Case 3", price: "3000", type: "Sale" },
-        { id: '04', coverPhoto: { url: "https://images.pexels.com/photos/1693946/pexels-photo-1693946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" }, imageAlt: "Property Case 4", title: "Property Case 4", price: "4000", type: "Sale" },
+        {
+            id: '01',
+            coverPhoto: { url: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
+            imageAlt: "Property Case 1",
+            title: "Colette's Family Home",
+            price: 1131,
+            location: "Miami",
+            accommodation: {
+                hosts: 6,
+                room: 2
+            }
+        },
+        {
+            id: '02', coverPhoto: { url: "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
+            imageAlt: "Property Case 2",
+            title: "Property Case 2",
+            price: 890,
+            location: "Blowing Rock",
+            accommodation: {
+                hosts: 10,
+                room: 1
+            }
+        },
+        {
+            id: '03', coverPhoto: { url: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
+            imageAlt: "Nancy's Cottage 2",
+            title: "Nancy's Cottage 2",
+            price: 2500,
+            location: "Black Mountain",
+            accommodation: {
+                hosts: 8,
+                room: 1
+            }
+        },
+        {
+            id: '04',
+            coverPhoto: { url: "https://images.pexels.com/photos/1693946/pexels-photo-1693946.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
+            imageAlt: "Property Case 4",
+            title: "Property Case 4",
+            price: 5620,
+            location: "Black Mountain",
+            accommodation: {
+                hosts: 8,
+                room: 1
+            }
+        },
     ]
 }
 
@@ -40,17 +82,18 @@ export const usePropertiesFetch = (hitsPerPage) => {
             .catch((error) => setError(error))
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
+    // useEffect(() => {
+    //     getData()
+    // }, [])
 
+    // Check if turns data or error and handle dummy data
     useEffect(() => {
         data && setLoading(!loading)
         setTimeout(() => {
             if (data) return
             setData(defaultData)
             setLoading(!loading)
-        }, 5000)
+        }, 1000)
     }, [data])
 
     return { data, error, loading }

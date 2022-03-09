@@ -11,7 +11,7 @@ const Offers_v2 = () => {
   const OfferCard = ({ data: { title, description, image } }) => (
     <figure className="offer-card">
       <picture className="offer_image">
-        <img src={image.src} alt={image.alt} />
+        <img src={image.src} alt={image.alt} width="150" height="150" />
       </picture>
       <figcaption className="offer_content">
         <time dateTime={description.date} className="content_date">

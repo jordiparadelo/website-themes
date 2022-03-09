@@ -5,6 +5,7 @@ import "./Searcher.scss";
 import { formConfig } from "./formConfig";
 
 const Searcher = () => {
+    // console.log(formConfig)
     return (
         <form className="searcher">
             {formConfig.inputs.map(({ label, type, placeholder, required }) => (

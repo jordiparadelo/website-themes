@@ -14,19 +14,10 @@ const RecommendedProperties_v3 = () => {
     ) : (
       <HorizontalMediaScroller>
         {data.hits.map(
-          ({
-            id,
-            coverPhoto: { url: imageSrc },
-            imageAlt,
-            title,
-            price,
-            type,
-          }) => (
+          (property) => (
             <PropertyCard
-              key={id}
-              data={{ imageSrc, imageAlt, title, price, type }}
-              id={`reccomendedProperty_${id}`}
-              attr={{ tabIndex: 0 }}
+              key={property.id}
+              data={property}
             />
           )
         )}

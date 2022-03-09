@@ -70,13 +70,90 @@
     }
   }
 
-  // Property Card
+  // Propertie card
   .property-card {
+    display: grid;
+    border-radius: var(--corners);
+    overflow: hidden;
+
+    > * {
+      grid-area: 1/1;
+    }
+
     .property_image {
       flex-grow: 1;
     }
     .property_content {
-      flex-grow: 0;
+      --padding: var(--spacing-lg);
+      --fontSize: clamp(18px, 5vw, 24px);
+
+      color: var(--lightColor);
+      display: flex;
+      flex-wrap: wrap;
+      padding: var(--padding);
+      gap: var(--padding);
+      background: linear-gradient(360deg, var(--fontColor), transparent);
+      font-size: var(--fontSize);
+      align-self: end;
+      flex-grow: 1;
+
+      .content_title {
+        flex-grow: 1;
+        .location {
+          font-size: max(14px, 0.8em);
+        }
+      }
+
+      .content_details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        > * {
+          flex-grow: 1;
+        }
+
+        // Lateral Border
+        > * + * {
+          border-right: var(--border);
+        }
+
+        .details_price {
+          display: flex;
+          justify-content: center;
+          font-size: 1.5em;
+          font-weight: bold;
+          .tag {
+            display: none;
+          }
+        }
+        .details_accommodation {
+          display: flex;
+          font-size: 0.7em;
+          gap: var(--spacing);
+
+          > * {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row-reverse;
+            gap: var(--spacing-xs);
+            justify-content: center;
+            font-weight: bold;
+            align-self: inherit;
+            align-items: inherit;
+          }
+
+          // Lateral Border
+          > * + * {
+            border-left: var(--border);
+          }
+
+          .tag {
+            color: var(--grayColor);
+            font-weight: lighter;
+          }
+        }
+      }
     }
   }
 }
