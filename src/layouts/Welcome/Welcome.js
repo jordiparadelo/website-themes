@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Styles
 import "./Welcome.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
-import { DataProvider } from "./DataContext";
+import { DataProvider, useDataContext } from "./DataContext";
+// Animations
+import { initAnimation } from "./animations";
+
 
 // Default
 export const Default = () => {
@@ -17,7 +20,14 @@ export const Default = () => {
   );
 };
 
+
+
 const Welcome = ({ version }) => {
+  // Animation Init
+  useEffect(() => {
+    initAnimation()
+  }, [])
+
   return (
     <DataProvider>
       <section id="Welcome" data-version={version || null}>

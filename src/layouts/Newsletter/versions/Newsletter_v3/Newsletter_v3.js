@@ -1,43 +1,25 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useDataContext } from "../../DataContext";
 // // Styles
 // import "./Newsletter_v3.scss";
 
 const Newsletter_v3 = () => {
   const { form, content } = useDataContext();
-  const inputRef = useRef(null);
-
-  // Methods
-  function handleFocus({ type, currentTarget }) {
-    const hasValue = currentTarget.value ? true : false;
-    const FOCUS_TYPE = {
-      focus: true,
-      blur: false,
-    };
-    console.log({ hasValue, type: FOCUS_TYPE[type] });
-    hasValue
-      ? (inputRef.current.dataset.focused = "true")
-      : (inputRef.current.dataset.focused = `${FOCUS_TYPE[type]}`);
-  }
 
   // Form
   const Form = () => (
     <form className="contact-form">
-      {form.inputs.map(({ label, type }) => (
+      {form.inputs.map(({ label, type }, index) => (
         <label
-          key={label}
+          key={label + index}
           className="input-group"
           data-input="email"
-          ref={inputRef}
-        // data-focused={inputFocused}
         >
           {label}
           <input
             type={type}
             label={label}
             placeholder="jhondoe@gmail.com"
-            onFocus={handleFocus}
-            onBlur={handleFocus}
             required
           />
         </label>

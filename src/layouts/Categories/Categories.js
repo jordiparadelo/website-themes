@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 // Styles
 import "./Categories.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
 import { DataProvider } from "./DataContext";
+// Animations
+import { initAnimation } from "./animations";
 
 // Default
 export const Default = () => {
@@ -18,9 +20,16 @@ export const Default = () => {
 };
 
 const Categories = ({ version }) => {
+  const sectionRef = useRef(null);
+
+  // Animation Init
+  useEffect(() => {
+    initAnimation()
+  }, [])
+
   return (
     <DataProvider>
-      <section id="Categories" data-version={version || null}>
+      <section id="Categories" ref={sectionRef} data-version={version || null}>
         {version
           ? <VersionProvider version={version} />
           : <Default />

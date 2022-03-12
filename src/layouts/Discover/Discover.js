@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Styles
 import "./Discover.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
 import { DataProvider } from "./DataContext";
+// Animations
+import { initAnimation } from "./animations";
 
 // Default
 export const Default = () => {
@@ -17,6 +19,11 @@ export const Default = () => {
   );
 };
 const Discover = ({ version }) => {
+  // Animation Init
+  useEffect(() => {
+    initAnimation()
+  }, [])
+
   return (
     <DataProvider>
       <section id="Discover" data-version={version || null}>

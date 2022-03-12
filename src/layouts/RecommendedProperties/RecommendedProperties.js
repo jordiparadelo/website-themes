@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Styles
 import "./RecommendedProperties.scss";
 // Version
 import { VersionProvider } from "./versions/VersionContext.js";
 // Data
 import { DataProvider } from "./DataContext";
+// Animations
+import { initAnimation } from "./animations";
 
 // Default
 export const Default = () => {
@@ -18,6 +20,10 @@ export const Default = () => {
 };
 
 const RecommendedProperties = ({ version }) => {
+  // Animation Init
+  useEffect(() => {
+    initAnimation()
+  }, [])
   return (
     <DataProvider>
       <section id="RecommendedProperties" data-version={version || null}>

@@ -53,7 +53,7 @@ const defaultData = {
 }
 
 export const usePropertiesFetch = (hitsPerPage) => {
-    const [data, setData] = useState(null)
+    const [data, setData] = useState(defaultData)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
 
