@@ -22,15 +22,15 @@ const App = () => {
     <>
       <Navbar version={1} />
       <main>
-        <Hero version={1} />
-        <Welcome version={1} />
-        <FeaturesProperties version={1} />
-        <Discover version={1} />
-        <RecommendedProperties version={1} />
-        <Categories version={1} />
-        <Offers version={1} />
-        <Instagram version={1} />
-        <Newsletter version={3} />
+        <Hero version={2} />
+        <Welcome version={2} />
+        <FeaturesProperties version={2} />
+        <Discover version={2} />
+        <RecommendedProperties version={2} />
+        <Categories version={2} />
+        <Offers version={2} />
+        <Instagram version={2} />
+        <Newsletter version={2} />
       </main>
       <Footer version={1} />
       {/* <Discounts /> */}

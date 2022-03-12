@@ -16,18 +16,19 @@ const tl = anime.timeline({
 // Idle Animation
 function idleAnimation() {
     const headerChilds = document.querySelector(`${$Section} .header *`);
-    const instagramGrid = document.querySelectorAll(`${$Section} .grid_image`);
+    const instagramGrid = document.querySelectorAll(`${$Section} .images-grid`);
     const gridImages = document.querySelectorAll(`${$Section} .grid_image img`);
 
     anime.set(gridImages, {
-        scale: '1.5'
+        scale: '1.5',
+        opacity: 0
     });
     anime.set(headerChilds, {
         opacity: 0,
     });
-    anime.set(instagramGrid, {
-        opacity: 0
-    });
+    // anime.set(instagramGrid, {
+    //     opacity: 0
+    // });
 
 }
 // Text Animaitons
@@ -44,13 +45,11 @@ function titleAnimation() {
 }
 // Property List Animaiton
 function imagesAnimation() {
-    const instagramGrid = document.querySelector(`${$Section} .images-grid`);
-    const gridChilds = [...instagramGrid.children]
+    const gridImages = document.querySelectorAll(`${$Section} .grid_image img`);
 
     return {
-        targets: gridChilds,
-        translateY: ["20%", "0%"],
-        opacity: [0, 1],
+        targets: gridImages,
+        opacity: 1,
         delay: anime.stagger(200),
     }
 }
@@ -59,7 +58,7 @@ function imagesAnimation() {
 export function initAnimation() {
     // Grid Scroll on Y axis
     const scrollOnY = anime({
-        targets: `${$Section} .grid_image:nth-child(odd)`,
+        targets: `${$Section} .grid_image img`,
         easing: `cubicBezier(0.22, 1, 0.36, 1)`,
         translateY: ['10%', '-5%'],
         position: 'relative',
@@ -91,7 +90,7 @@ export function initAnimation() {
         triggerElement: `${$Section}`,
         duration: '100%',
     })
-        // .addIndicators({ name: `${$Section} Scroll Indicator` })
+        .addIndicators({ name: `${$Section} Scroll Indicator` })
         .on("progress", ({ progress }) => scrollOnY.seek(progress * 150))
         .addTo(controller)
 }
